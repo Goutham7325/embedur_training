@@ -1,0 +1,11 @@
+total 4
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file2
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file3
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file4
+lrwxrwxrwx 1 goutham goutham   14 Feb  1 18:35 file_link -> dir1/dir2/file
+drwxrwxr-x 2 goutham goutham 4096 Feb  1 18:35 dir2
+total 8
+-rwxrwxr-x 1 goutham goutham    0 Feb  1 18:30 file1
+-rw-r--r-- 1 goutham goutham    0 Feb  1 18:33 file2
+drwxrwxr-x 3 goutham goutham 4096 Feb  1 18:37 dir1
+-rw-rw-r-- 1 goutham goutham  294 Feb  1 18:37 sorted.txt

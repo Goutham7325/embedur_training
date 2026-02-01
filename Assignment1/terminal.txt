@@ -1,0 +1,540 @@
+goutham@embedurU1:~$ echo "Module 1 Assignment - Goutham R , SSN College"
+Module 1 Assignment - Goutham R , SSN College
+goutham@embedurU1:~$ echo "Date - 01 Feb 2026"
+Date - 01 Feb 2026
+goutham@embedurU1:~$ echo "Q1 Create a file and add executable permission to all users (user, group and others)"
+Q1 Create a file and add executable permission to all users (user, group and others)
+goutham@embedurU1:~$ pwd
+/home/goutham
+goutham@embedurU1:~$ cd Documents
+goutham@embedurU1:~/Documents$ mkdir assignment1
+goutham@embedurU1:~/Documents$ cd assignment1/
+goutham@embedurU1:~/Documents/assignment1$ touch file1
+goutham@embedurU1:~/Documents/assignment1$ chm
+
+Command 'chm' not found, did you mean:
+  command 'chr' from snap chr (0.80.4)
+  command 'crm' from deb crmsh (4.3.1-1ubuntu3)
+  command 'crm' from deb crm114 (20100106-10)
+  command 'cht' from deb chemtool (1.6.14-6)
+  command 'zhm' from deb zephyr-clients (3.1.2-1build3)
+  command 'bhm' from deb postal (0.76+nmu1)
+  command 'clm' from deb mcl (1:14-137+ds-9build2)
+  command 'cpm' from deb cpm (0.32-1.3)
+  command 'chem' from deb groff (1.22.4-8build1)
+  command 'cam' from deb libcamera-tools (0~git20200629+e7aa92a-9)
+  command 'chg' from deb mercurial (6.1.1-1ubuntu1)
+  command 'xchm' from deb xchm (2:1.33-1)
+  command 'cbm' from deb cbm (0.3.2-1)
+See 'snap info <snapname>' for additional versions.
+goutham@embedurU1:~/Documents/assignment1$ 
+goutham@embedurU1:~/Documents/assignment1$ ls -l
+total 0
+-rw-rw-r-- 1 goutham goutham 0 Feb  1 18:30 file1
+goutham@embedurU1:~/Documents/assignment1$ chmod a+x file1; ls -l
+total 0
+-rwxrwxr-x 1 goutham goutham 0 Feb  1 18:30 file1
+goutham@embedurU1:~/Documents/assignment1$ echo "Q2 create a file and remove write permission for group user alone"
+Q2 create a file and remove write permission for group user alone
+goutham@embedurU1:~/Documents/assignment1$ touch file2
+goutham@embedurU1:~/Documents/assignment1$ ls -l
+total 0
+-rwxrwxr-x 1 goutham goutham 0 Feb  1 18:30 file1
+-rw-rw-r-- 1 goutham goutham 0 Feb  1 18:33 file2
+goutham@embedurU1:~/Documents/assignment1$ chmod g-w file2; ls -l file2
+-rw-r--r-- 1 goutham goutham 0 Feb  1 18:33 file2
+goutham@embedurU1:~/Documents/assignment1$ echo "Q3 Create a file and add a softlink to the file in different directory"
+Q3 Create a file and add a softlink to the file in different directory
+goutham@embedurU1:~/Documents/assignment1$ mkdir -p dir1/dir2
+goutham@embedurU1:~/Documents/assignment1$ ls
+dir1  file1  file2
+goutham@embedurU1:~/Documents/assignment1$ touch dir1/dir2/file1
+goutham@embedurU1:~/Documents/assignment1$ ln -s dir1/dir2/file dir1/file_link
+goutham@embedurU1:~/Documents/assignment1$ cd dir1
+goutham@embedurU1:~/Documents/assignment1/dir1$ ls
+dir2  file_link
+goutham@embedurU1:~/Documents/assignment1/dir1$ cd dir2
+goutham@embedurU1:~/Documents/assignment1/dir1/dir2$ ls
+file1
+goutham@embedurU1:~/Documents/assignment1/dir1/dir2$ cd ../..
+goutham@embedurU1:~/Documents/assignment1$ echo "Q4 Display all active processes running in the system"
+Q4 Display all active processes running in the system
+goutham@embedurU1:~/Documents/assignment1$ ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 13:43 ?        00:00:04 /sbin/init splash
+root           2       0  0 13:43 ?        00:00:00 [kthreadd]
+root           3       2  0 13:43 ?        00:00:00 [pool_workqueue_release]
+root           4       2  0 13:43 ?        00:00:00 [kworker/R-rcu_g]
+root           5       2  0 13:43 ?        00:00:00 [kworker/R-rcu_p]
+root           6       2  0 13:43 ?        00:00:00 [kworker/R-slub_]
+root           7       2  0 13:43 ?        00:00:00 [kworker/R-netns]
+root           8       2  0 13:43 ?        00:00:00 [kworker/0:0-cgroup_destroy]
+root          10       2  0 13:43 ?        00:00:00 [kworker/0:0H-events_highpri
+root          12       2  0 13:43 ?        00:00:00 [kworker/R-mm_pe]
+root          13       2  0 13:43 ?        00:00:00 [rcu_tasks_kthread]
+root          14       2  0 13:43 ?        00:00:00 [rcu_tasks_rude_kthread]
+root          15       2  0 13:43 ?        00:00:00 [rcu_tasks_trace_kthread]
+root          16       2  0 13:43 ?        00:00:00 [ksoftirqd/0]
+root          17       2  0 13:43 ?        00:00:07 [rcu_preempt]
+root          18       2  0 13:43 ?        00:00:00 [migration/0]
+root          19       2  0 13:43 ?        00:00:00 [idle_inject/0]
+root          20       2  0 13:43 ?        00:00:00 [cpuhp/0]
+root          21       2  0 13:43 ?        00:00:00 [cpuhp/1]
+root          22       2  0 13:43 ?        00:00:00 [idle_inject/1]
+root          23       2  0 13:43 ?        00:00:01 [migration/1]
+root          24       2  0 13:43 ?        00:00:00 [ksoftirqd/1]
+root          26       2  0 13:43 ?        00:00:00 [kworker/1:0H-kblockd]
+root          27       2  0 13:43 ?        00:00:00 [cpuhp/2]
+root          28       2  0 13:43 ?        00:00:00 [idle_inject/2]
+root          29       2  0 13:43 ?        00:00:01 [migration/2]
+root          30       2  0 13:43 ?        00:00:00 [ksoftirqd/2]
+root          32       2  0 13:43 ?        00:00:00 [kworker/2:0H-events_highpri
+root          33       2  0 13:43 ?        00:00:00 [cpuhp/3]
+root          34       2  0 13:43 ?        00:00:00 [idle_inject/3]
+root          35       2  0 13:43 ?        00:00:01 [migration/3]
+root          36       2  0 13:43 ?        00:00:00 [ksoftirqd/3]
+root          43       2  0 13:43 ?        00:00:00 [kdevtmpfs]
+root          44       2  0 13:43 ?        00:00:00 [kworker/R-inet_]
+root          45       2  0 13:43 ?        00:00:00 [kauditd]
+root          46       2  0 13:43 ?        00:00:00 [khungtaskd]
+root          47       2  0 13:43 ?        00:00:00 [oom_reaper]
+root          49       2  0 13:43 ?        00:00:00 [kworker/R-write]
+root          51       2  0 13:43 ?        00:00:00 [kcompactd0]
+root          52       2  0 13:43 ?        00:00:00 [ksmd]
+root          54       2  0 13:43 ?        00:00:00 [khugepaged]
+root          55       2  0 13:43 ?        00:00:00 [kworker/R-kinte]
+root          56       2  0 13:43 ?        00:00:00 [kworker/R-kbloc]
+root          57       2  0 13:43 ?        00:00:00 [kworker/R-blkcg]
+root          58       2  0 13:43 ?        00:00:00 [irq/9-acpi]
+root          60       2  0 13:43 ?        00:00:00 [kworker/R-tpm_d]
+root          61       2  0 13:43 ?        00:00:00 [kworker/R-ata_s]
+root          62       2  0 13:43 ?        00:00:00 [kworker/R-md]
+root          63       2  0 13:43 ?        00:00:00 [kworker/R-md_bi]
+root          64       2  0 13:43 ?        00:00:00 [kworker/R-edac-]
+root          65       2  0 13:43 ?        00:00:00 [kworker/R-devfr]
+root          66       2  0 13:43 ?        00:00:00 [watchdogd]
+root          68       2  0 13:43 ?        00:00:01 [kworker/3:1H-kblockd]
+root          69       2  0 13:43 ?        00:00:00 [kswapd0]
+root          70       2  0 13:43 ?        00:00:00 [ecryptfs-kthread]
+root          71       2  0 13:43 ?        00:00:00 [kworker/R-kthro]
+root          72       2  0 13:43 ?        00:00:00 [kworker/R-acpi_]
+root          75       2  0 13:43 ?        00:00:00 [scsi_eh_0]
+root          76       2  0 13:43 ?        00:00:00 [kworker/R-scsi_]
+root          77       2  0 13:43 ?        00:00:00 [scsi_eh_1]
+root          78       2  0 13:43 ?        00:00:00 [kworker/R-scsi_]
+root          82       2  0 13:43 ?        00:00:00 [kworker/R-mld]
+root          83       2  0 13:43 ?        00:00:00 [kworker/R-ipv6_]
+root          91       2  0 13:43 ?        00:00:00 [kworker/R-kstrp]
+root          93       2  0 13:43 ?        00:00:00 [kworker/u13:0]
+root          94       2  0 13:43 ?        00:00:00 [kworker/u14:0-ttm]
+root          95       2  0 13:43 ?        00:00:00 [kworker/u15:0-ttm]
+root          96       2  0 13:43 ?        00:00:00 [kworker/u16:0-ttm]
+root          97       2  0 13:43 ?        00:00:00 [kworker/u17:0-ttm]
+root         110       2  0 13:43 ?        00:00:00 [kworker/R-charg]
+root         129       2  0 13:43 ?        00:00:01 [kworker/1:1H-kblockd]
+root         133       2  0 13:43 ?        00:00:01 [kworker/0:1H-kblockd]
+root         160       2  0 13:43 ?        00:00:01 [kworker/2:1H-kblockd]
+root         162       2  0 13:43 ?        00:00:00 [scsi_eh_2]
+root         163       2  0 13:43 ?        00:00:00 [kworker/R-scsi_]
+root         199       2  0 13:43 ?        00:00:02 [jbd2/sda3-8]
+root         200       2  0 13:43 ?        00:00:00 [kworker/R-ext4-]
+root         271       2  0 13:43 ?        00:00:00 [kworker/u8:1-netns]
+root         275       2  0 13:43 ?        00:00:00 [irq/18-vmwgfx]
+root         276       2  0 13:43 ?        00:00:00 [kworker/R-ttm]
+root         354       2  0 13:43 ?        00:00:00 [kworker/R-crypt]
+systemd+     463       1  0 13:43 ?        00:00:15 /lib/systemd/systemd-oomd
+root         625       1  0 13:43 ?        00:00:00 /usr/libexec/accounts-daemon
+root         626       1  0 13:43 ?        00:00:00 /usr/sbin/acpid
+root         631       1  0 13:43 ?        00:00:00 /usr/sbin/cron -f -P
+message+     632       1  0 13:43 ?        00:00:07 @dbus-daemon --system --addr
+root         634       1  0 13:43 ?        00:00:01 /usr/sbin/NetworkManager --n
+root         640       1  0 13:43 ?        00:00:00 /usr/sbin/irqbalance --foreg
+root         644       1  0 13:43 ?        00:00:00 /usr/bin/python3 /usr/bin/ne
+root         645       1  0 13:43 ?        00:00:01 /usr/libexec/polkitd --no-de
+root         647       1  0 13:43 ?        00:00:00 /usr/libexec/power-profiles-
+syslog       649       1  0 13:43 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+root         659       1  0 13:43 ?        00:00:00 /usr/libexec/switcheroo-cont
+root         661       1  0 13:43 ?        00:00:01 /lib/systemd/systemd-logind
+root         724       1  0 13:43 ?        00:00:00 /usr/sbin/ModemManager
+root         734       1  0 13:43 ?        00:00:00 /usr/bin/python3 /usr/share/
+root         796       2  0 13:43 ?        00:00:01 [kworker/u8:2-ext4-rsv-conve
+kernoops     809       1  0 13:43 ?        00:00:00 /usr/sbin/kerneloops --test
+kernoops     819       1  0 13:43 ?        00:00:00 /usr/sbin/kerneloops
+root        1758       1  0 13:44 ?        00:00:13 /usr/bin/VBoxDRMClient
+root        2107       2  0 13:44 ?        00:00:00 [kworker/u15:1-ttm]
+root        2108       2  0 13:44 ?        00:00:00 [kworker/u16:1-ttm]
+root        2227       1  0 13:44 ?        00:00:00 /usr/sbin/gdm3
+rtkit       2257       1  0 13:44 ?        00:00:00 /usr/libexec/rtkit-daemon
+root        2357       1  0 13:44 ?        00:00:00 /usr/libexec/upowerd
+root        2364       1  0 13:44 ?        00:00:00 /usr/libexec/packagekitd
+colord      2535       1  0 13:44 ?        00:00:00 /usr/libexec/colord
+avahi       8438       1  0 13:52 ?        00:00:00 avahi-daemon: running [embed
+avahi       8440    8438  0 13:52 ?        00:00:00 avahi-daemon: chroot helper
+root       39238    2227  0 13:57 ?        00:00:00 gdm-session-worker [pam/gdm-
+goutham    42748       1  0 13:57 ?        00:00:00 /lib/systemd/systemd --user
+goutham    42753   42748  0 13:57 ?        00:00:00 (sd-pam)
+goutham    42830   42748  0 13:57 ?        00:00:00 /usr/bin/pipewire
+goutham    42834   42748  0 13:57 ?        00:00:00 /usr/bin/pipewire-media-sess
+goutham    42835   42748  0 13:57 ?        00:00:04 /usr/bin/pulseaudio --daemon
+goutham    42838   42748  0 13:57 ?        00:00:00 /snap/snapd-desktop-integrat
+goutham    42871       1  0 13:57 ?        00:00:00 /usr/bin/gnome-keyring-daemo
+goutham    42901   39238  0 13:57 tty2     00:00:00 /usr/libexec/gdm-wayland-ses
+goutham    42906   42748  0 13:57 ?        00:00:01 /usr/bin/dbus-daemon --sessi
+goutham    42920   42901  0 13:57 tty2     00:00:00 /usr/libexec/gnome-session-b
+goutham    42930   42748  0 13:57 ?        00:00:00 /usr/libexec/xdg-document-po
+goutham    42945   42748  0 13:57 ?        00:00:00 /usr/libexec/xdg-permission-
+root       42970   42930  0 13:57 ?        00:00:00 fusermount3 -o rw,nosuid,nod
+goutham    43051   42748  0 13:57 ?        00:00:00 /usr/libexec/gnome-session-c
+goutham    43063   42748  0 13:57 ?        00:00:00 /usr/libexec/gvfsd
+goutham    43075   42748  0 13:57 ?        00:00:00 /usr/libexec/gvfsd-fuse /run
+goutham    43078   42748  0 13:57 ?        00:00:00 /usr/libexec/gnome-session-b
+goutham    43159   43078  0 13:57 ?        00:00:00 /usr/libexec/at-spi-bus-laun
+goutham    43162   42748  0 13:57 ?        00:02:35 /usr/bin/gnome-shell
+goutham    43173   43159  0 13:57 ?        00:00:00 /usr/bin/dbus-daemon --confi
+goutham    43311   42748  0 13:57 ?        00:00:00 /usr/libexec/gnome-shell-cal
+goutham    43317   42748  0 13:57 ?        00:00:00 /usr/libexec/evolution-sourc
+goutham    43318   42838  0 13:57 ?        00:00:00 /snap/snapd-desktop-integrat
+goutham    43326   42748  0 13:57 ?        00:00:00 /usr/libexec/goa-daemon
+goutham    43327   42748  0 13:57 ?        00:00:00 /usr/libexec/gvfs-udisks2-vo
+goutham    43347   42748  0 13:57 ?        00:00:00 /usr/libexec/gvfs-goa-volume
+goutham    43351   42748  0 13:57 ?        00:00:00 /usr/libexec/evolution-calen
+goutham    43360   42748  0 13:57 ?        00:00:00 /usr/libexec/goa-identity-se
+goutham    43367   42748  0 13:57 ?        00:00:00 /usr/libexec/gvfs-gphoto2-vo
+goutham    43374   42748  0 13:57 ?        00:00:00 /usr/libexec/gvfs-mtp-volume
+goutham    43382   42748  0 13:57 ?        00:00:00 /usr/libexec/dconf-service
+goutham    43385   42748  0 13:57 ?        00:00:00 /usr/libexec/evolution-addre
+goutham    43386   42748  0 13:57 ?        00:00:01 /usr/libexec/gvfs-afc-volume
+goutham    43405   43063  0 13:57 ?        00:00:00 /usr/libexec/gvfsd-trash --s
+goutham    43414   42748  0 13:57 ?        00:00:00 /usr/libexec/at-spi2-registr
+goutham    43415   42748  0 13:57 ?        00:00:00 /usr/bin/gjs /usr/share/gnom
+goutham    43429   42748  0 13:57 ?        00:00:00 sh -c /usr/bin/ibus-daemon -
+goutham    43430   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-a11y-settin
+goutham    43432   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-color
+goutham    43435   43429  0 13:57 ?        00:00:12 /usr/bin/ibus-daemon --panel
+goutham    43437   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-datetime
+goutham    43439   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-housekeepin
+goutham    43441   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-keyboard
+goutham    43444   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-media-keys
+goutham    43448   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-power
+goutham    43450   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-print-notif
+goutham    43453   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-rfkill
+goutham    43455   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-screensaver
+goutham    43456   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-sharing
+goutham    43461   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-smartcard
+goutham    43473   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-sound
+goutham    43475   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-wacom
+goutham    43515   43078  0 13:57 ?        00:00:00 /usr/libexec/evolution-data-
+goutham    43519   43078  0 13:57 ?        00:00:00 /usr/libexec/gsd-disk-utilit
+goutham    43533   43435  0 13:57 ?        00:00:00 /usr/libexec/ibus-dconf
+goutham    43537   43435  0 13:57 ?        00:00:01 /usr/libexec/ibus-extension-
+goutham    43540   42748  0 13:57 ?        00:00:00 /usr/libexec/ibus-portal
+goutham    43582   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-printer
+goutham    43595   43162  0 13:57 ?        00:00:00 /usr/bin/Xwayland :0 -rootle
+goutham    43616   43435  0 13:57 ?        00:00:04 /usr/libexec/ibus-engine-sim
+goutham    43621   42748  0 13:57 ?        00:00:00 /usr/libexec/gvfsd-metadata
+goutham    43625   42748  0 13:57 ?        00:00:00 /usr/libexec/gsd-xsettings
+goutham    43667   42748  0 13:57 ?        00:00:00 /usr/libexec/xdg-desktop-por
+goutham    43681   42748  0 13:57 ?        00:00:00 /usr/libexec/xdg-desktop-por
+goutham    43692   42748  0 13:57 ?        00:00:00 /usr/bin/gjs /usr/share/gnom
+goutham    43693   42748  0 13:57 ?        00:00:00 /usr/libexec/ibus-x11
+goutham    43731   42748  0 13:57 ?        00:00:03 /usr/libexec/tracker-miner-f
+goutham    43751   42748  0 13:57 ?        00:00:00 /usr/bin/VBoxClient --clipbo
+goutham    43753   43751  0 13:57 ?        00:00:00 /usr/bin/VBoxClient --clipbo
+goutham    43794   42748  0 13:57 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+goutham    43795   43794  0 13:57 ?        00:00:02 /usr/bin/VBoxClient --vmsvga
+goutham    43814   42748  0 13:57 ?        00:00:00 /usr/libexec/xdg-desktop-por
+root       44137       2  0 13:57 ?        00:00:02 [kworker/2:2-cgroup_destroy]
+root       44261       2  0 13:57 ?        00:00:00 [kworker/u17:1]
+goutham    45011   42748  0 13:57 ?        00:00:01 /usr/bin/nautilus --gapplica
+goutham    45487   42748  0 13:58 ?        00:00:18 /usr/libexec/gnome-terminal-
+goutham    45517   45487  0 13:58 pts/1    00:00:00 bash
+goutham    45930   43078  0 13:58 ?        00:00:00 update-notifier
+root       46907       2  0 13:59 ?        00:00:00 [kworker/u14:1]
+root       54125       1  0 13:59 ?        00:00:00 /usr/sbin/cupsd -l
+root       67851       1  0 14:02 ?        00:00:00 /usr/libexec/udisks2/udisksd
+root       68459       1  0 14:03 ?        00:00:00 /usr/sbin/cups-browsed
+root       73181       1  0 14:05 ?        00:00:00 /sbin/wpa_supplicant -u -s -
+root       75877       2  0 15:21 ?        00:00:01 [kworker/u11:1-flush-8:0]
+root       76007       2  0 15:31 ?        00:00:00 [kworker/u10:2-flush-8:0]
+root       76021       2  0 15:32 ?        00:00:00 [kworker/u11:2-events_power_
+root       76074       2  0 16:31 ?        00:00:00 [kworker/u9:2-flush-8:0]
+root       76078       2  0 16:51 ?        00:00:00 [kworker/u12:0-events_unboun
+root       76080       2  0 16:53 ?        00:00:00 [kworker/u9:3-events_power_e
+root       76083       2  0 17:15 ?        00:00:01 [kworker/1:0-events]
+root       76084       2  0 17:16 ?        00:00:00 [kworker/u10:0-events_unboun
+root       76088       2  0 17:17 ?        00:00:00 [kworker/3:2H]
+root       76091       2  0 17:28 ?        00:00:00 [kworker/u11:0-events_unboun
+root       76098       2  0 17:35 ?        00:00:00 [kworker/u12:2-events_power_
+root       76104       2  0 18:21 ?        00:00:00 [kworker/1:2]
+root       76107       2  0 18:21 ?        00:00:00 [kworker/2:1-events]
+root       76108       1  0 18:21 ?        00:00:02 /usr/lib/snapd/snapd
+root       76114       1  0 18:21 ?        00:00:00 /lib/systemd/systemd-journal
+root       76117       2  0 18:21 ?        00:00:00 [kworker/u12:3-events_power_
+root       76118       2  0 18:21 ?        00:00:00 [kworker/0:2-events]
+systemd+   76123       1  0 18:21 ?        00:00:00 /lib/systemd/systemd-resolve
+root       76124       2  0 18:21 ?        00:00:00 [kworker/3:1-mm_percpu_wq]
+systemd+   76127       1  0 18:21 ?        00:00:00 /lib/systemd/systemd-timesyn
+root       76128       1  0 18:21 ?        00:00:00 /lib/systemd/systemd-udevd
+root       76224       2  0 18:22 ?        00:00:00 [kworker/u10:1-events_unboun
+goutham    76240   43162  0 18:22 ?        00:00:00 gjs /usr/share/gnome-shell/e
+root       76298       2  0 18:27 ?        00:00:00 [kworker/u9:0-events_unbound
+root       76313       2  0 18:30 ?        00:00:00 [kworker/3:0-cgroup_destroy]
+root       76359       2  0 18:32 ?        00:00:00 [kworker/2:0]
+root       76375       2  0 18:33 ?        00:00:00 [kworker/u10:3-events_power_
+root       76398       2  0 18:35 ?        00:00:00 [kworker/u9:1-events_unbound
+root       76423       2  0 18:35 ?        00:00:00 [kworker/u12:1]
+goutham    76424   45517  0 18:36 pts/1    00:00:00 ps -ef
+goutham@embedurU1:~/Documents/assignment1$ ps aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.1 167916 13100 ?        Ss   13:43   0:04 /sbin/init sp
+root           2  0.0  0.0      0     0 ?        S    13:43   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    13:43   0:00 [pool_workque
+root           4  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-rc
+root           5  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-rc
+root           6  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-sl
+root           7  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ne
+root           8  0.0  0.0      0     0 ?        I    13:43   0:00 [kworker/0:0-
+root          10  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/0:0H
+root          12  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-mm
+root          13  0.0  0.0      0     0 ?        I    13:43   0:00 [rcu_tasks_kt
+root          14  0.0  0.0      0     0 ?        I    13:43   0:00 [rcu_tasks_ru
+root          15  0.0  0.0      0     0 ?        I    13:43   0:00 [rcu_tasks_tr
+root          16  0.0  0.0      0     0 ?        S    13:43   0:00 [ksoftirqd/0]
+root          17  0.0  0.0      0     0 ?        I    13:43   0:07 [rcu_preempt]
+root          18  0.0  0.0      0     0 ?        S    13:43   0:00 [migration/0]
+root          19  0.0  0.0      0     0 ?        S    13:43   0:00 [idle_inject/
+root          20  0.0  0.0      0     0 ?        S    13:43   0:00 [cpuhp/0]
+root          21  0.0  0.0      0     0 ?        S    13:43   0:00 [cpuhp/1]
+root          22  0.0  0.0      0     0 ?        S    13:43   0:00 [idle_inject/
+root          23  0.0  0.0      0     0 ?        S    13:43   0:01 [migration/1]
+root          24  0.0  0.0      0     0 ?        S    13:43   0:00 [ksoftirqd/1]
+root          26  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/1:0H
+root          27  0.0  0.0      0     0 ?        S    13:43   0:00 [cpuhp/2]
+root          28  0.0  0.0      0     0 ?        S    13:43   0:00 [idle_inject/
+root          29  0.0  0.0      0     0 ?        S    13:43   0:01 [migration/2]
+root          30  0.0  0.0      0     0 ?        S    13:43   0:00 [ksoftirqd/2]
+root          32  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/2:0H
+root          33  0.0  0.0      0     0 ?        S    13:43   0:00 [cpuhp/3]
+root          34  0.0  0.0      0     0 ?        S    13:43   0:00 [idle_inject/
+root          35  0.0  0.0      0     0 ?        S    13:43   0:01 [migration/3]
+root          36  0.0  0.0      0     0 ?        S    13:43   0:00 [ksoftirqd/3]
+root          43  0.0  0.0      0     0 ?        S    13:43   0:00 [kdevtmpfs]
+root          44  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-in
+root          45  0.0  0.0      0     0 ?        S    13:43   0:00 [kauditd]
+root          46  0.0  0.0      0     0 ?        S    13:43   0:00 [khungtaskd]
+root          47  0.0  0.0      0     0 ?        S    13:43   0:00 [oom_reaper]
+root          49  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-wr
+root          51  0.0  0.0      0     0 ?        S    13:43   0:00 [kcompactd0]
+root          52  0.0  0.0      0     0 ?        SN   13:43   0:00 [ksmd]
+root          54  0.0  0.0      0     0 ?        SN   13:43   0:00 [khugepaged]
+root          55  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ki
+root          56  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-kb
+root          57  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-bl
+root          58  0.0  0.0      0     0 ?        S    13:43   0:00 [irq/9-acpi]
+root          60  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-tp
+root          61  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-at
+root          62  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-md
+root          63  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-md
+root          64  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ed
+root          65  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-de
+root          66  0.0  0.0      0     0 ?        S    13:43   0:00 [watchdogd]
+root          68  0.0  0.0      0     0 ?        I<   13:43   0:01 [kworker/3:1H
+root          69  0.0  0.0      0     0 ?        S    13:43   0:00 [kswapd0]
+root          70  0.0  0.0      0     0 ?        S    13:43   0:00 [ecryptfs-kth
+root          71  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-kt
+root          72  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ac
+root          75  0.0  0.0      0     0 ?        S    13:43   0:00 [scsi_eh_0]
+root          76  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-sc
+root          77  0.0  0.0      0     0 ?        S    13:43   0:00 [scsi_eh_1]
+root          78  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-sc
+root          82  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ml
+root          83  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ip
+root          91  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ks
+root          93  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/u13:
+root          94  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/u14:
+root          95  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/u15:
+root          96  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/u16:
+root          97  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/u17:
+root         110  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ch
+root         129  0.0  0.0      0     0 ?        I<   13:43   0:01 [kworker/1:1H
+root         133  0.0  0.0      0     0 ?        I<   13:43   0:01 [kworker/0:1H
+root         160  0.0  0.0      0     0 ?        I<   13:43   0:01 [kworker/2:1H
+root         162  0.0  0.0      0     0 ?        S    13:43   0:00 [scsi_eh_2]
+root         163  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-sc
+root         199  0.0  0.0      0     0 ?        S    13:43   0:02 [jbd2/sda3-8]
+root         200  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-ex
+root         271  0.0  0.0      0     0 ?        I    13:43   0:00 [kworker/u8:1
+root         275  0.0  0.0      0     0 ?        S    13:43   0:00 [irq/18-vmwgf
+root         276  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-tt
+root         354  0.0  0.0      0     0 ?        I<   13:43   0:00 [kworker/R-cr
+systemd+     463  0.0  0.0  14836  6784 ?        Ss   13:43   0:15 /lib/systemd/
+root         625  0.0  0.0 239908  7624 ?        Ssl  13:43   0:00 /usr/libexec/
+root         626  0.0  0.0   2816  1792 ?        Ss   13:43   0:00 /usr/sbin/acp
+root         631  0.0  0.0   9496  2944 ?        Ss   13:43   0:00 /usr/sbin/cro
+message+     632  0.0  0.0  11156  6272 ?        Ss   13:43   0:07 @dbus-daemon 
+root         634  0.0  0.1 482540 19284 ?        Ssl  13:43   0:01 /usr/sbin/Net
+root         640  0.0  0.0  82700  3840 ?        Ssl  13:43   0:00 /usr/sbin/irq
+root         644  0.0  0.1  41060 20992 ?        Ss   13:43   0:00 /usr/bin/pyth
+root         645  0.0  0.1 243668 11860 ?        Ssl  13:43   0:01 /usr/libexec/
+root         647  0.0  0.0 240096  7296 ?        Ssl  13:43   0:00 /usr/libexec/
+syslog       649  0.0  0.0 222404  5760 ?        Ssl  13:43   0:00 /usr/sbin/rsy
+root         659  0.0  0.0 236496  6912 ?        Ssl  13:43   0:00 /usr/libexec/
+root         661  0.0  0.0  23668  8004 ?        Ss   13:43   0:01 /lib/systemd/
+root         724  0.0  0.1 317972 12112 ?        Ssl  13:43   0:00 /usr/sbin/Mod
+root         734  0.0  0.2 118160 23296 ?        Ssl  13:43   0:00 /usr/bin/pyth
+root         796  0.0  0.0      0     0 ?        I    13:43   0:01 [kworker/u8:2
+kernoops     809  0.0  0.0  13092  2208 ?        Ss   13:43   0:00 /usr/sbin/ker
+kernoops     819  0.0  0.0  13092  2188 ?        Ss   13:43   0:00 /usr/sbin/ker
+root        1758  0.0  0.0 350156  2176 ?        Sl   13:44   0:13 /usr/bin/VBox
+root        2107  0.0  0.0      0     0 ?        I<   13:44   0:00 [kworker/u15:
+root        2108  0.0  0.0      0     0 ?        I<   13:44   0:00 [kworker/u16:
+root        2227  0.0  0.0 241348  8832 ?        Ssl  13:44   0:00 /usr/sbin/gdm
+rtkit       2257  0.0  0.0 154004  3328 ?        SNsl 13:44   0:00 /usr/libexec/
+root        2357  0.0  0.0 242372  8960 ?        Ssl  13:44   0:00 /usr/libexec/
+root        2364  0.0  0.1 298352 20144 ?        Ssl  13:44   0:00 /usr/libexec/
+colord      2535  0.0  0.1 860252 13880 ?        Ssl  13:44   0:00 /usr/libexec/
+avahi       8438  0.0  0.0   7712  3968 ?        Ss   13:52   0:00 avahi-daemon:
+avahi       8440  0.0  0.0   7444  1408 ?        S    13:52   0:00 avahi-daemon:
+root       39238  0.0  0.0 318188 10784 ?        Sl   13:57   0:00 gdm-session-w
+goutham    42748  0.0  0.1  19732 11880 ?        Ss   13:57   0:00 /lib/systemd/
+goutham    42753  0.0  0.0 171172  6980 ?        S    13:57   0:00 (sd-pam)
+goutham    42830  0.0  0.0  39568  6400 ?        S<sl 13:57   0:00 /usr/bin/pipe
+goutham    42834  0.0  0.0  23456  6656 ?        Ssl  13:57   0:00 /usr/bin/pipe
+goutham    42835  0.0  0.2 1422688 27588 ?       S<sl 13:57   0:04 /usr/bin/puls
+goutham    42838  0.0  0.1  39132 11904 ?        Ss   13:57   0:00 /snap/snapd-d
+goutham    42871  0.0  0.0 240900  7580 ?        Sl   13:57   0:00 /usr/bin/gnom
+goutham    42901  0.0  0.0 162392  5888 tty2     Ssl+ 13:57   0:00 /usr/libexec/
+goutham    42906  0.0  0.1  16692 12800 ?        Ss   13:57   0:01 /usr/bin/dbus
+goutham    42920  0.0  0.1 223044 15744 tty2     Sl+  13:57   0:00 /usr/libexec/
+goutham    42930  0.0  0.0 536912  7424 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    42945  0.0  0.0 236152  6144 ?        Ssl  13:57   0:00 /usr/libexec/
+root       42970  0.0  0.0   2796  1920 ?        Ss   13:57   0:00 fusermount3 -
+goutham    43051  0.0  0.0  91912  5632 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43063  0.0  0.0 240644  7936 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43075  0.0  0.0 380896  6784 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43078  0.0  0.1 592912 17536 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43159  0.0  0.0 309620  7552 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43162  0.9  3.6 5259668 401056 ?      Ssl  13:57   2:35 /usr/bin/gnom
+goutham    43173  0.0  0.0   8432  4608 ?        S    13:57   0:00 /usr/bin/dbus
+goutham    43311  0.0  0.1 582936 18176 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43317  0.0  0.2 1006660 25856 ?       Ssl  13:57   0:00 /usr/libexec/
+goutham    43318  0.0  0.2 430456 28396 ?        Sl   13:57   0:00 /snap/snapd-d
+goutham    43326  0.0  0.3 596452 41088 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43327  0.0  0.0 389748 11008 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43347  0.0  0.0 236636  6784 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43351  0.0  0.2 840492 31104 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43360  0.0  0.1 338404 15360 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43367  0.0  0.0 237540  6784 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43374  0.0  0.0 236460  6784 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43382  0.0  0.0 156972  5888 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43385  0.0  0.2 672268 29056 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43386  0.0  0.0 315212  8320 ?        Ssl  13:57   0:01 /usr/libexec/
+goutham    43405  0.0  0.0 314868  8960 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43414  0.0  0.0 162688  7424 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43415  0.0  0.2 2603596 27216 ?       Sl   13:57   0:00 /usr/bin/gjs 
+goutham    43429  0.0  0.0   2892  1664 ?        Ss   13:57   0:00 sh -c /usr/bi
+goutham    43430  0.0  0.0 310420  6912 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43432  0.0  0.2 598528 26060 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43435  0.0  0.1 315288 12060 ?        Sl   13:57   0:12 /usr/bin/ibus
+goutham    43437  0.0  0.1 375468 16128 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43439  0.0  0.0 311924  7936 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43441  0.0  0.1 414312 22020 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43444  0.0  0.2 716704 27140 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43448  0.0  0.2 524296 25988 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43450  0.0  0.1 249860 11392 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43453  0.0  0.0 457860  6656 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43455  0.0  0.0 236292  6400 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43456  0.0  0.0 465940 10752 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43461  0.0  0.0 312300  8320 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43473  0.0  0.0 319336  9728 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43475  0.0  0.2 414900 22620 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43515  0.0  0.5 771540 63952 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43519  0.0  0.0 232272  7680 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43533  0.0  0.0 237308  7296 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43537  0.0  0.2 347816 28956 ?        Sl   13:57   0:01 /usr/libexec/
+goutham    43540  0.0  0.0 237260  7424 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43582  0.0  0.1 342360 15104 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43595  0.0  0.5 207180 64364 ?        S    13:57   0:00 /usr/bin/Xway
+goutham    43616  0.0  0.0 163484  7296 ?        Sl   13:57   0:04 /usr/libexec/
+goutham    43621  0.0  0.0 163028  6528 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43625  0.0  0.7 531216 80160 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43667  0.0  0.1 623776 13696 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43681  0.0  0.2 662884 29172 ?        Ssl  13:57   0:00 /usr/libexec/
+goutham    43692  0.0  0.2 2603544 28264 ?       Sl   13:57   0:00 /usr/bin/gjs 
+goutham    43693  0.0  0.2 194100 24712 ?        Sl   13:57   0:00 /usr/libexec/
+goutham    43731  0.0  0.2 721612 33212 ?        SNsl 13:57   0:03 /usr/libexec/
+goutham    43751  0.0  0.0  19568  1444 ?        S    13:57   0:00 /usr/bin/VBox
+goutham    43753  0.0  0.0 218392  4004 ?        Sl   13:57   0:00 /usr/bin/VBox
+goutham    43794  0.0  0.0  19568  1332 ?        S    13:57   0:00 /usr/bin/VBox
+goutham    43795  0.0  0.0 151672  2100 ?        Sl   13:57   0:02 /usr/bin/VBox
+goutham    43814  0.0  0.2 343916 24836 ?        Ssl  13:57   0:00 /usr/libexec/
+root       44137  0.0  0.0      0     0 ?        I    13:57   0:02 [kworker/2:2-
+root       44261  0.0  0.0      0     0 ?        I<   13:57   0:00 [kworker/u17:
+goutham    45011  0.0  0.6 997368 73800 ?        Sl   13:57   0:01 /usr/bin/naut
+goutham    45487  0.1  0.4 554652 52240 ?        Ssl  13:58   0:18 /usr/libexec/
+goutham    45517  0.0  0.0  11776  5632 pts/1    Ss   13:58   0:00 bash
+goutham    45930  0.0  0.2 494096 31108 ?        Sl   13:58   0:00 update-notifi
+root       46907  0.0  0.0      0     0 ?        I<   13:59   0:00 [kworker/u14:
+root       54125  0.0  0.1  73440 14336 ?        Ss   13:59   0:00 /usr/sbin/cup
+root       67851  0.0  0.1 393096 13224 ?        Ssl  14:02   0:00 /usr/libexec/
+root       68459  0.0  0.1 172072 11392 ?        Ssl  14:03   0:00 /usr/sbin/cup
+root       73181  0.0  0.0  16504  6528 ?        Ss   14:05   0:00 /sbin/wpa_sup
+root       75877  0.0  0.0      0     0 ?        I    15:21   0:01 [kworker/u11:
+root       76007  0.0  0.0      0     0 ?        I    15:31   0:00 [kworker/u10:
+root       76021  0.0  0.0      0     0 ?        I    15:32   0:00 [kworker/u11:
+root       76074  0.0  0.0      0     0 ?        I    16:31   0:00 [kworker/u9:2
+root       76078  0.0  0.0      0     0 ?        I    16:51   0:00 [kworker/u12:
+root       76080  0.0  0.0      0     0 ?        I    16:53   0:00 [kworker/u9:3
+root       76083  0.0  0.0      0     0 ?        I    17:15   0:01 [kworker/1:0-
+root       76084  0.0  0.0      0     0 ?        I    17:16   0:00 [kworker/u10:
+root       76088  0.0  0.0      0     0 ?        I<   17:17   0:00 [kworker/3:2H
+root       76091  0.0  0.0      0     0 ?        I    17:28   0:00 [kworker/u11:
+root       76098  0.0  0.0      0     0 ?        I    17:35   0:00 [kworker/u12:
+root       76104  0.0  0.0      0     0 ?        I    18:21   0:00 [kworker/1:2]
+root       76107  0.0  0.0      0     0 ?        I    18:21   0:00 [kworker/2:1-
+root       76108  0.3  0.3 1923904 38588 ?       Ssl  18:21   0:02 /usr/lib/snap
+root       76114  0.0  0.1  47704 15232 ?        S<s  18:21   0:00 /lib/systemd/
+root       76117  0.0  0.0      0     0 ?        I    18:21   0:00 [kworker/u12:
+root       76118  0.0  0.0      0     0 ?        I    18:21   0:00 [kworker/0:2-
+systemd+   76123  0.0  0.1  26340 14572 ?        Ss   18:21   0:00 /lib/systemd/
+root       76124  0.0  0.0      0     0 ?        I    18:21   0:00 [kworker/3:1-
+systemd+   76127  0.0  0.0  89388  7296 ?        Ssl  18:21   0:00 /lib/systemd/
+root       76128  0.0  0.0  26524  6528 ?        Ss   18:21   0:00 /lib/systemd/
+root       76224  0.0  0.0      0     0 ?        R    18:22   0:00 [kworker/u10:
+goutham    76240  0.1  0.5 2856212 59936 ?       Sl   18:22   0:00 gjs /usr/shar
+root       76298  0.0  0.0      0     0 ?        I    18:27   0:00 [kworker/u9:0
+root       76313  0.0  0.0      0     0 ?        I    18:30   0:00 [kworker/3:0-
+root       76359  0.0  0.0      0     0 ?        I    18:32   0:00 [kworker/2:0]
+root       76375  0.0  0.0      0     0 ?        I    18:33   0:00 [kworker/u10:
+root       76398  0.0  0.0      0     0 ?        I    18:35   0:00 [kworker/u9:1
+root       76423  0.0  0.0      0     0 ?        I    18:35   0:00 [kworker/u12:
+goutham    76425  0.0  0.0  12672  3456 pts/1    R+   18:36   0:00 ps aux
+goutham@embedurU1:~/Documents/assignment1$ echo "Create 3 files in dir1 and redirect time sorted list output to a file"
+Create 3 files in dir1 and redirect time sorted list output to a file
+goutham@embedurU1:~/Documents/assignment1$ touch dir1/file2 dir1/file3 dir1/file4
+goutham@embedurU1:~/Documents/assignment1$ ls -lt dir1 > sorted.txt
+goutham@embedurU1:~/Documents/assignment1$ cat sorted.txt
+total 4
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file2
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file3
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file4
+lrwxrwxrwx 1 goutham goutham   14 Feb  1 18:35 file_link -> dir1/dir2/file
+drwxrwxr-x 2 goutham goutham 4096 Feb  1 18:35 dir2
+goutham@embedurU1:~/Documents/assignment1$ ls -l | sort -k8 >> sorted.txt
+goutham@embedurU1:~/Documents/assignment1$ cat sorted.txt
+total 4
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file2
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file3
+-rw-rw-r-- 1 goutham goutham    0 Feb  1 18:37 file4
+lrwxrwxrwx 1 goutham goutham   14 Feb  1 18:35 file_link -> dir1/dir2/file
+drwxrwxr-x 2 goutham goutham 4096 Feb  1 18:35 dir2
+total 8
+-rwxrwxr-x 1 goutham goutham    0 Feb  1 18:30 file1
+-rw-r--r-- 1 goutham goutham    0 Feb  1 18:33 file2
+drwxrwxr-x 3 goutham goutham 4096 Feb  1 18:37 dir1
+-rw-rw-r-- 1 goutham goutham  294 Feb  1 18:37 sorted.txt
+goutham@embedurU1:~/Documents/assignment1$ echo "-----------------###################------------------------"
+-----------------###################------------------------
+goutham@embedurU1:~/Documents/assignment1$ touch terminal.txt
+goutham@embedurU1:~/Documents/assignment1$ 
+
