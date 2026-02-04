@@ -1,0 +1,195 @@
+goutham@embedurU1:~/Desktop$ cd ..
+goutham@embedurU1:~$ cd Documents/
+goutham@embedurU1:~/Documents$ cd assignment2
+goutham@embedurU1:~/Documents/assignment2$ echo "Q1 Use the appropriate command to list all files larger than 1 MB in the current directory and save the output to a file"
+Q1 Use the appropriate command to list all files larger than 1 MB in the current directory and save the output to a file
+goutham@embedurU1:~/Documents/assignment2$ rm *
+goutham@embedurU1:~/Documents/assignment2$ touch junk1; truncate -s 1M junk1
+goutham@embedurU1:~/Documents/assignment2$ truncate -s 2M junk2
+goutham@embedurU1:~/Documents/assignment2$ truncate -s 500K junk3
+goutham@embedurU1:~/Documents/assignment2$ ls -lh
+total 0
+-rw-rw-r-- 1 goutham goutham 1.0M Feb  4 10:50 junk1
+-rw-rw-r-- 1 goutham goutham 2.0M Feb  4 10:50 junk2
+-rw-rw-r-- 1 goutham goutham 500K Feb  4 10:51 junk3
+goutham@embedurU1:~/Documents/assignment2$ ls -lh | awk '$5 ~ /M/ && $5+0>1 {print $0}'
+-rw-rw-r-- 1 goutham goutham 2.0M Feb  4 10:50 junk2
+goutham@embedurU1:~/Documents/assignment2$ echo "Q2 Use the appropriate command to search for lines containing the word "ERROR" in a log file but exclude lines containing "DEBUG". Save the results to a file named filtered_log.txt"
+Q2 Use the appropriate command to search for lines containing the word ERROR in a log file but exclude lines containing DEBUG. Save the results to a file named filtered_log.txt
+goutham@embedurU1:~/Documents/assignment2$ cat > log.txt << EOF
+DEBUG: Starting the application initialization.
+ERROR: Unable to connect to the database.
+INFO: User 'admin' logged in successfully.
+DEBUG: Fetching configuration settings from the server.
+ERROR: DEBUG - Configuration settings could not be applied.
+INFO: Scheduled job 'backup' completed successfully.
+DEBUG: Connection to server timed out. Retrying...
+ERROR: Failed to fetch data from API endpoint '/users'.
+INFO: Maintenance mode activated.
+ERROR: DEBUG - Query execution failed due to a syntax error.
+DEBUG: Reloading application modules.
+ERROR: Missing required parameter in the request.
+INFO: Shutting down the system gracefully.
+DEBUG: Closing unused network connections.
+ERROR: DEBUG - Unexpected server response received.
+EOF
+goutham@embedurU1:~/Documents/assignment2$ cat log.txt
+DEBUG: Starting the application initialization.
+ERROR: Unable to connect to the database.
+INFO: User 'admin' logged in successfully.
+DEBUG: Fetching configuration settings from the server.
+ERROR: DEBUG - Configuration settings could not be applied.
+INFO: Scheduled job 'backup' completed successfully.
+DEBUG: Connection to server timed out. Retrying...
+ERROR: Failed to fetch data from API endpoint '/users'.
+INFO: Maintenance mode activated.
+ERROR: DEBUG - Query execution failed due to a syntax error.
+DEBUG: Reloading application modules.
+ERROR: Missing required parameter in the request.
+INFO: Shutting down the system gracefully.
+DEBUG: Closing unused network connections.
+ERROR: DEBUG - Unexpected server response received.
+goutham@embedurU1:~/Documents/assignment2$ grep "ERROR" log.txt | grep -v "DEBUG" > filtered_log.txt
+goutham@embedurU1:~/Documents/assignment2$ cat filtered_log.txt 
+ERROR: Unable to connect to the database.
+ERROR: Failed to fetch data from API endpoint '/users'.
+ERROR: Missing required parameter in the request.
+goutham@embedurU1:~/Documents/assignment2$ awk '/ERROR/ && !/DEBUG/' log.txt > filtered_log1.txt
+goutham@embedurU1:~/Documents/assignment2$ cat filtered_log1.txt 
+ERROR: Unable to connect to the database.
+ERROR: Failed to fetch data from API endpoint '/users'.
+ERROR: Missing required parameter in the request.
+goutham@embedurU1:~/Documents/assignment2$ echo "Q3 Replace all occurrences of "localhost" with "127.0.0.1" in a configuration file named config.txt, and save the updated file as updated_config.txt"
+Q3 Replace all occurrences of localhost with 127.0.0.1 in a configuration file named config.txt, and save the updated file as updated_config.txt
+goutham@embedurU1:~/Documents/assignment2$ cat > config.txt << EOF
+server=localhost
+db_host=localhost
+api_url=http://localhost:8080
+EOF
+goutham@embedurU1:~/Documents/assignment2$ cat config.txt 
+server=localhost
+db_host=localhost
+api_url=http://localhost:8080
+goutham@embedurU1:~/Documents/assignment2$ sed 's/localhost/127.0.0.1/g' config.txt > updated_config.txt
+goutham@embedurU1:~/Documents/assignment2$ cat filtered_log.txt
+ERROR: Unable to connect to the database.
+ERROR: Failed to fetch data from API endpoint '/users'.
+ERROR: Missing required parameter in the request.
+goutham@embedurU1:~/Documents/assignment2$ cat updated_config.txt 
+server=127.0.0.1
+db_host=127.0.0.1
+api_url=http://127.0.0.1:8080
+goutham@embedurU1:~/Documents/assignment2$ echo "Q4 Use the networking tool command and print all the gateway available in a sorted manner"
+Q4 Use the networking tool command and print all the gateway available in a sorted manner
+goutham@embedurU1:~/Documents/assignment2$ netstat -rn | awk '$1=="0.0.0.0" {print $2}' | sort
+10.0.2.2
+goutham@embedurU1:~/Documents/assignment2$ netstat -rn | awk '
+> $1=="0.0.0.0" {
+> gw[++count]= $2
+> }
+> END {
+> for(i=1;i<=count;i++)
+> for(j=i+1;j<=count;j++)
+> if(gw[i]>gw[j]){
+> temp = gw[i]
+> gw[i]= gw[j]
+> gw[j]= temp
+> }
+> for(i=1;i<=count;i++)
+> print gw[i]
+> }'
+10.0.2.2
+goutham@embedurU1:~/Documents/assignment2$ netstat -rn
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         10.0.2.2        0.0.0.0         UG        0 0          0 enp0s3
+10.0.2.0        0.0.0.0         255.255.255.0   U         0 0          0 enp0s3
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 enp0s3
+goutham@embedurU1:~/Documents/assignment2$ echo "Q5 Write a code to identify the process with the highest memory usage and then terminate it"
+Q5 Write a code to identify the process with the highest memory usage and then terminate it
+goutham@embedurU1:~/Documents/assignment2$ ps aux | awk '
+> NR==1 {next}
+> {
+> if($4 > max){
+> max = $4
+> pid = $2
+> cmd = $11
+> }
+> }
+> END {
+> print "PID:", pid, "MEM%:", max, "CMD:", cmd
+> }'
+PID: 2745 MEM%: 3.0 CMD: /usr/bin/gnome-shell
+goutham@embedurU1:~/Documents/assignment2$ ps
+    PID TTY          TIME CMD
+   3739 pts/0    00:00:00 bash
+   3899 pts/0    00:00:00 ps
+goutham@embedurU1:~/Documents/assignment2$ google-chrome &
+[1] 3900
+goutham@embedurU1:~/Documents/assignment2$ google-chrome: command not found
+^C
+[1]+  Exit 127                google-chrome
+goutham@embedurU1:~/Documents/assignment2$ firefox
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/local/share/doc /usr/local/share/doc none bind,ro 0 0): cannot write to "/var/lib/snapd/hostfs/usr/local/share/doc" because it would affect the host in "/var/lib/snapd"
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/gimp/2.0/help /usr/share/gimp/2.0/help none bind,ro 0 0): cannot write to "/var/lib/snapd/hostfs/usr/share/gimp/2.0/help" because it would affect the host in "/var/lib/snapd"
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/javascript /usr/share/javascript none bind,ro 0 0): cannot write to "/var/lib/snapd/hostfs/usr/share/javascript" because it would affect the host in "/var/lib/snapd"
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/sphinx_rtd_theme /usr/share/sphinx_rtd_theme none bind,ro 0 0): cannot write to "/var/lib/snapd/hostfs/usr/share/sphinx_rtd_theme" because it would affect the host in "/var/lib/snapd"
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/xubuntu-docs /usr/share/xubuntu-docs none bind,ro 0 0): cannot write to "/var/lib/snapd/hostfs/usr/share/xubuntu-docs" because it would affect the host in "/var/lib/snapd"
+Gtk-Message: 11:05:48.509: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+bg
+^Z
+[1]+  Stopped                 firefox
+goutham@embedurU1:~/Documents/assignment2$ bg
+[1]+ firefox &
+goutham@embedurU1:~/Documents/assignment2$ ps
+    PID TTY          TIME CMD
+   3739 pts/0    00:00:00 bash
+   3915 pts/0    00:00:18 firefox
+   4120 pts/0    00:00:00 forkserver
+   4124 pts/0    00:00:00 Socket Process
+   4158 pts/0    00:00:01 Privileged Cont
+   4169 pts/0    00:00:00 RDD Process
+   4298 pts/0    00:00:00 WebExtensions
+   4445 pts/0    00:00:00 Utility Process
+   4451 pts/0    00:00:00 Web Content
+   4461 pts/0    00:00:00 Web Content
+   4555 pts/0    00:00:00 Web Content
+   4639 pts/0    00:00:00 ps
+goutham@embedurU1:~/Documents/assignment2$ ps aux | awk '
+NR==1 {next}
+{
+  if ($4 > max) {
+    max = $4
+    pid = $2
+    cmd = $11
+  }
+}
+END {
+  print "PID:", pid, "MEM%:", max, "CMD:", cmd
+}'
+PID: 3915 MEM%: 3.6 CMD: /snap/firefox/7720/usr/lib/firefox/firefox
+goutham@embedurU1:~/Documents/assignment2$ kill $(ps aux | awk '
+NR==1 {next}
+{
+  if ($4 > max) {
+    max = $4
+    pid = $2
+  }
+}
+END {print pid}')
+goutham@embedurU1:~/Documents/assignment2$ Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+^C
+[1]+  Terminated              firefox
+goutham@embedurU1:~/Documents/assignment2$ ps
+    PID TTY          TIME CMD
+   3739 pts/0    00:00:00 bash
+   4660 pts/0    00:00:00 ps
+goutham@embedurU1:~/Documents/assignment2$ echo "largest application wrt mem usage terminated"
+largest application wrt mem usage terminated
+goutham@embedurU1:~/Documents/assignment2$ echo " ------------#######-----------"
+ ------------#######-----------
+goutham@embedurU1:~/Documents/assignment2$ touch terminal.txt
