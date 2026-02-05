@@ -1,7 +1,7 @@
 # EmbedUR Assignments
 
-**Name:**  
-**Assignment Title:** EmbedUR Assignments
+**Name: GOUTHAM R**  
+**EmbedUR Assignments**
 
 ---
 
