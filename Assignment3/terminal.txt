@@ -1,0 +1,160 @@
+goutham@embedurU1:~/Documents/assignment3$ mkdir source
+goutham@embedurU1:~/Documents/assignment3$ cd source/
+goutham@embedurU1:~/Documents/assignment3/source$ touch file{1..10}.txt
+goutham@embedurU1:~/Documents/assignment3/source$ touch script{1..5}.sh
+goutham@embedurU1:~/Documents/assignment3/source$ ls -lh
+total 0
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file10.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file1.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file2.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file3.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file4.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file5.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file6.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file7.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file8.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 file9.txt
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 script1.sh
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 script2.sh
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 script3.sh
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 script4.sh
+-rw-rw-r-- 1 goutham goutham 0 Feb  5 10:13 script5.sh
+goutham@embedurU1:~/Documents/assignment3/source$ cd ..
+goutham@embedurU1:~/Documents/assignment3$ mkdir backup
+goutham@embedurU1:~/Documents/assignment3$ touch backup_manager.sh
+goutham@embedurU1:~/Documents/assignment3$ cat > backup_manager.sh << EOF
+> #!/bin/bash
+> if [ $# -ne 3 ]; then
+>     echo "Use <source> <backup> <ext>"
+>     exit 1
+> fi
+> SOURCE_DIR="$1"
+> BACKUP_DIR="$2"
+> EXT="$3"
+> if [ ! -d "$SOURCE_DIR" ]; then
+>     echo "Error : Source Dir does not exist"
+>     exit 1
+> fi
+> if [ ! -d "$BACKUP_DIR" ]; then 
+>     mkdir -p "$BACKUP_DIR" || {
+>     echo "Error : Failed to create Backup Dir"
+>     exit 1
+> fi
+> FILES=( "$SOURCE_DIR"/*"$EXT" )
+> if [ ${#FILES[@]} -eq 1 ] && [ ! -e "${FILES[0]}" ]; then
+>     echo "No Files with extension $EXT found in Source Dir"
+>     exit 0
+> fi
+> export BACKUP_COUNT=0;
+> TOTAL_SIZE=0;
+> 
+> echo "Files to be backed up:"
+> echo 
+> 
+> for file in "${FILES[@]}"; do
+>     size=$(stat -c %s "$file")
+>     echo -e "$(basename "$file")\t - ${size} bytes"
+> done
+> 
+> for file in "${FILES[@]}"; do
+>     filename=$(basename "$file")
+>     dest="$BACKUP_DIR/$filename"
+>     size=$(stat -c %s "$file")
+>     if [ -e "$dest" ]; then
+>         if [ "$file" -nt "$dest" ]; then
+>             cp "$file" "$dest"
+>             ((BACKUP_COUNT++))
+>             ((TOTAL_SIZE+=size))
+>         fi
+>     else
+>         cp "$file" "$dest"
+>         ((BACKUP_COUNT++))
+>         ((TOTAL_SIZE+=size))
+>     fi
+> done
+> REPORT="$BACKUP_DIR/backup_report.log"
+> {
+>     echo "Backup Report"
+>     echo "Total Files backed up:    $BACKUP_COUNT"
+>     echo "Total size backed up :    $TOTAL_SIZE bytes"
+>     echo "Backup directory     :    $BACKUP_DIR"
+>     echo "Backup completed on  :    $(date)"
+> } > "$REPORT"
+> 
+> echo "BACKUP completed"
+> echo "REPORT saved at $REPORT"
+> EOF
+stat: cannot statx '': No such file or directory
+stat: cannot statx '': No such file or directory
+goutham@embedurU1:~/Documents/assignment3$ ls -lh
+total 12K
+drwxrwxr-x 2 goutham goutham 4.0K Feb  5 10:28 backup
+-rw-rw-r-- 1 goutham goutham 1.2K Feb  5 11:04 backup_manager.sh
+drwxrwxr-x 2 goutham goutham 4.0K Feb  5 10:13 source
+goutham@embedurU1:~/Documents/assignment3$ chmod +x backup_manager.sh 
+goutham@embedurU1:~/Documents/assignment3$ ./backup_manager.sh "./source" "./backup" "txt"
+Use <source> <backup> <ext>
+goutham@embedurU1:~/Documents/assignment3$ nano backup_manager.sh 
+goutham@embedurU1:~/Documents/assignment3$ nano backup_manager.sh 
+goutham@embedurU1:~/Documents/assignment3$ nano backup_manager.sh 
+goutham@embedurU1:~/Documents/assignment3$ ./backup_manager.sh "./source" "./backup" ".txt"
+Files to be backed up:
+
+file10.txt 	 -  bytes
+file1.txt 	 -  bytes
+file2.txt 	 -  bytes
+file3.txt 	 -  bytes
+file4.txt 	 -  bytes
+file5.txt 	 -  bytes
+file6.txt 	 -  bytes
+file7.txt 	 -  bytes
+file8.txt 	 -  bytes
+file9.txt 	 -  bytes
+BACKUP completed
+REPORT saved at ./backup/backup_report.log 
+goutham@embedurU1:~/Documents/assignment3$ cat backup/backup_report.log 
+Backup Report
+Total Files backed up:   0 
+Total size backed up :   0  bytes
+Backup directory     :   ./backup 
+Backup completed on  :   Thursday 05 February 2026 11:18:34 AM IST
+goutham@embedurU1:~/Documents/assignment3$ ls backup
+backup_report.log
+goutham@embedurU1:~/Documents/assignment3$ nano backup_manager.sh 
+goutham@embedurU1:~/Documents/assignment3$ ./backup_manager.sh "./source" "./backup" ".txt"
+Files to be backed up:
+
+file10.txt 	 -  bytes
+file1.txt 	 -  bytes
+file2.txt 	 -  bytes
+file3.txt 	 -  bytes
+file4.txt 	 -  bytes
+file5.txt 	 -  bytes
+file6.txt 	 -  bytes
+file7.txt 	 -  bytes
+file8.txt 	 -  bytes
+file9.txt 	 -  bytes
+BACKUP completed
+REPORT saved at ./backup/backup_report.log 
+goutham@embedurU1:~/Documents/assignment3$ cat backup/backup_report.log 
+Backup Report
+Total Files backed up:   10 
+Total size backed up :   0  bytes
+Backup directory     :   ./backup 
+Backup completed on  :   Thursday 05 February 2026 11:21:41 AM IST
+goutham@embedurU1:~/Documents/assignment3$ ls -lh backup
+total 4.0K
+-rw-rw-r-- 1 goutham goutham 179 Feb  5 11:21 backup_report.log
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file10.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file1.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file2.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file3.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file4.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file5.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file6.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file7.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file8.txt
+-rw-rw-r-- 1 goutham goutham   0 Feb  5 11:21 file9.txt
+goutham@embedurU1:~/Documents/assignment3$ touch terminal.txt
+goutham@embedurU1:~/Documents/assignment3$ 
+
