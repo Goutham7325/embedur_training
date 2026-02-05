@@ -23,4 +23,4 @@ This document describes and provides the implementation of a shell script named
 ## Usage
 
 ```bash
-./backup_manager.sh "/home/user/source" "/backup" ".txt"
+./backup_manager.sh "./source" "./backup" ".txt"
