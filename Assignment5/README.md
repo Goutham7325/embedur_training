@@ -1,5 +1,5 @@
 # Assignment 5
-#- Goutham R, 7th February 2026
+## - Goutham R, 7th February 2026
 ## Objective
 Create a Bash script named **`file_analyzer.sh`** to demonstrate the following concepts:
 
