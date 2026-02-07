@@ -1,0 +1,2 @@
+File analyser analyses the text document for word matching
+It is important to handle tab characters properly when using here documents, as they can cause unexpected results

@@ -1,0 +1,223 @@
+goutham@embedurU1:~/Desktop$ cd
+goutham@embedurU1:~$ cd Documents/
+goutham@embedurU1:~/Documents$ ls
+assignment1  assignment2  assignment3  assignment4  embedur_training
+goutham@embedurU1:~/Documents$ mkdir assignment5
+goutham@embedurU1:~/Documents$ cd assignment5
+goutham@embedurU1:~/Documents/assignment5$ touch file_analyzer.sh
+goutham@embedurU1:~/Documents/assignment5$ nano file_analyzer.sh 
+goutham@embedurU1:~/Documents/assignment5$ mkdir logs
+goutham@embedurU1:~/Documents/assignment5$ cd logs/
+goutham@embedurU1:~/Documents/assignment5/logs$ mkdir texts reports
+goutham@embedurU1:~/Documents/assignment5/logs$ cd texts/
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ touch file1.txt file2.txt
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ cat > file.txt <<EOF
+> a quick brown fox jumps over the lazy dog
+> All men are created equal and have the right to life, liberty and the pursuit of happiness
+> EOF
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ ls
+file1.txt  file2.txt  file.txt
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ mv file.txt file1.txt
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ ls
+file1.txt  file2.txt
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ cat file1.txt
+a quick brown fox jumps over the lazy dog
+All men are created equal and have the right to life, liberty and the pursuit of happiness
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ cat > file2.txt <<EOF
+> The problem with quotes found on the internet is that they are often not true
+> Biggest Error is error
+> EOF
+goutham@embedurU1:~/Documents/assignment5/logs/texts$ cd ..
+goutham@embedurU1:~/Documents/assignment5/logs$ ls
+reports  texts
+goutham@embedurU1:~/Documents/assignment5/logs$ cd reports
+goutham@embedurU1:~/Documents/assignment5/logs/reports$ ls
+goutham@embedurU1:~/Documents/assignment5/logs/reports$ touch rep1.txt rep2.txt
+goutham@embedurU1:~/Documents/assignment5/logs/reports$ cat > rep1.txt <<EOF
+> File analyser analyses the text document for word matching
+> It is important to handle tab characters properly when using here documents, as they can cause unexpected results
+> EOF
+goutham@embedurU1:~/Documents/assignment5/logs/reports$ cat > rep2.txt <<EOF
+> This file contains the word error
+> A company website usually contains links leading to About page, Privacy policy, Careers, Contact and many more pages.
+> EOF
+goutham@embedurU1:~/Documents/assignment5/logs/reports$ ls
+rep1.txt  rep2.txt
+goutham@embedurU1:~/Documents/assignment5/logs/reports$ cd ..
+goutham@embedurU1:~/Documents/assignment5/logs$ ls
+reports  texts
+goutham@embedurU1:~/Documents/assignment5/logs$ ls -lah
+total 16K
+drwxrwxr-x 4 goutham goutham 4.0K Feb  7 19:17 .
+drwxrwxr-x 3 goutham goutham 4.0K Feb  7 19:16 ..
+drwxrwxr-x 2 goutham goutham 4.0K Feb  7 19:48 reports
+drwxrwxr-x 2 goutham goutham 4.0K Feb  7 19:42 texts
+goutham@embedurU1:~/Documents/assignment5/logs$ cd ..
+goutham@embedurU1:~/Documents/assignment5$ ls
+file_analyzer.sh  logs
+goutham@embedurU1:~/Documents/assignment5$ chmod +x file_analyzer.sh
+goutham@embedurU1:~/Documents/assignment5$ ls
+file_analyzer.sh  logs
+goutham@embedurU1:~/Documents/assignment5$ ./file_analyzer.sh --help
+./file_analyzer.sh: line 112: unexpected EOF while looking for matching `"'
+./file_analyzer.sh: line 115: syntax error: unexpected end of file
+goutham@embedurU1:~/Documents/assignment5$ nano file_analyzer.sh 
+goutham@embedurU1:~/Documents/assignment5$ nano file_analyzer.sh 
+goutham@embedurU1:~/Documents/assignment5$ chmod 777 file_analyzer.sh 
+goutham@embedurU1:~/Documents/assignment5$ nano file_analyzer.sh 
+goutham@embedurU1:~/Documents/assignment5$ cat file_analyzer.sh 
+#!/bin/bash
+
+ERROR_LOG="errors.log"
+
+#Display help
+
+display_help(){
+cat << EOF
+Usage: $0 [OPTIONS]
+Options:
+	-d <directory>   Recursively search a directory for a keyword
+	-f <file>        Search for a keyword in a specific file
+	-k <keyword>     Keyword to search
+	--help           Display help menu
+Examples:
+	$0 -d logs -k error
+	$0 -f script.sh -k TODO
+	$0 --help
+EOF
+}
+
+#Redirection - log error
+
+log_error(){
+	echo "ERROR: "$1" | tee -a "$ERROR_LOG" >&2
+}
+ #Validate Inputs
+
+validate_inputs(){
+	#check keyword
+	if [[ -z "$KEYWORD" || ! "$KEYWORD" =~ ^[a-zA-Z0-9._-]+$ ]]; then
+		log_error "Invalid or empty keyword"
+		exit 1
+	fi
+
+	#check directory
+	if [[ -n "$DIRECTORY" && ! -d "$DIRECTORY" ]]; then
+		log_error "Directory '$DIRECTORY' does not exist"
+		exit 1
+	fi
+}
+
+#Recursive search
+
+recursive_search(){
+	local DIR="$1"
+	for ITEM in "$DIR"/*; do
+		if [[ -f "$ITEM" ]]; then
+			grep -H "$KEYWORD" "$ITEM" 2>>"$ERROR_LOG"
+		elif [[ -d "$ITEM" ]]; then
+			recursive_search "$ITEM"
+		fi
+	done
+}
+
+#Parse command line arguments
+
+DIRECTORY=""
+FILE=""
+KEYWORD=""
+
+# --help
+
+if [[ "$1" == "--help" ]]; then
+	display_help
+	exit 0
+fi
+
+while getopts ":d:f:k" opt; do
+	case $opt in
+		d) DIRECTORY="$OPTARG" ;;
+		f) FILE="$OPTARG" ;;
+		k) KEYWORD="$OPTARG" ;;
+		*)
+		  log_error "Invalid option"
+		  display_help
+		  exit 1
+		  ;;
+	esac
+done
+
+#Special Parameters
+
+echo "Script Name: $0"
+echo "Total Arguments: $#"
+echo "All Arguments: $@"
+
+#Validate Inputs
+
+validate_inputs
+
+#Files search using Here String
+
+if [[ -n "$FILE" ]]; then
+	echo "Searching file '$FILE' for keyword '$KEYWORD'..."
+	grep "$KEYWORD" <<< "$(cat "$FILE")"
+	echo "Exit status: $?"
+	exit 0
+fi
+
+#Recursively search directory
+
+if [[ -n "$DIRECTORY" ]]; then
+    echo "Recursively searching directory '$DIRECTORY' for keyword '$KEYWORD'..."
+    recursive_search "$DIRECTORY"
+    echo "Exit status: $?"
+    exit 0
+fi
+
+#Error if no valid arguments
+
+log_error "No valid options provided."
+display_help
+exit 1
+goutham@embedurU1:~/Documents/assignment5$ nano file_analyzer.sh 
+goutham@embedurU1:~/Documents/assignment5$ ./file_analyzer.sh --help
+./file_analyzer.sh: line 117: unexpected EOF while looking for matching `"'
+./file_analyzer.sh: line 120: syntax error: unexpected end of file
+goutham@embedurU1:~/Documents/assignment5$ nano file_analyzer.sh 
+goutham@embedurU1:~/Documents/assignment5$ ./file_analyzer.sh --help
+Usage: ./file_analyzer.sh [OPTIONS]
+Options:
+	-d <directory>   Recursively search a directory for a keyword
+	-f <file>        Search for a keyword in a specific file
+	-k <keyword>     Keyword to search
+	--help           Display help menu
+Examples:
+	./file_analyzer.sh -d logs -k error
+	./file_analyzer.sh -f script.sh -k TODO
+	./file_analyzer.sh --help
+goutham@embedurU1:~/Documents/assignment5$ ./file_analyzer.sh -d logs -k error
+Script Name: ./file_analyzer.sh
+Total Arguments: 4
+All Arguments: -d logs -k error
+Recursively searching directory 'logs' for keyword 'error'...
+logs/reports/rep2.txt:This file contains the word error
+logs/texts/file2.txt:Biggest Error is error
+Exit status: 0
+goutham@embedurU1:~/Documents/assignment5$ ./file_analyzer.sh -f logs/reports/rep2.txt -k file
+Script Name: ./file_analyzer.sh
+Total Arguments: 4
+All Arguments: -f logs/reports/rep2.txt -k file
+Searching file 'logs/reports/rep2.txt' for keyword 'file'...
+This file contains the word error
+Exit status: 0
+goutham@embedurU1:~/Documents/assignment5$ ./file_analyzer.sh -f logs/reports/rep2.txt -k none
+Script Name: ./file_analyzer.sh
+Total Arguments: 4
+All Arguments: -f logs/reports/rep2.txt -k none
+Searching file 'logs/reports/rep2.txt' for keyword 'none'...
+Exit status: 1
+goutham@embedurU1:~/Documents/assignment5$ ls
+errors.log  file_analyzer.sh  logs
+goutham@embedurU1:~/Documents/assignment5$ cat errors.log 
+goutham@embedurU1:~/Documents/assignment5$ nano errors.log 
