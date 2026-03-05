@@ -1,0 +1,112 @@
+vboxuser@Ubuntu2:~/Desktop$ ssh goutham@192.168.56.101
+goutham@192.168.56.101's password: 
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-101-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+81 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+10 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Wed Mar  4 21:54:32 2026 from 192.168.56.102
+goutham@embedurU1:~$ cd Documents/
+goutham@embedurU1:~/Documents$ ls
+assignment1  assignment3  assignment5                   computer_networks  func.sh
+assignment2  assignment4  Command-line-text-processing  embedur_training   training
+goutham@embedurU1:~/Documents$ lcd
+Command 'lcd' not found, but there are 15 similar ones.
+goutham@embedurU1:~/Documents$ !cd
+cd Documents/
+-bash: cd: Documents/: No such file or directory
+goutham@embedurU1:~/Documents$ !ls
+ls
+assignment1  assignment3  assignment5                   computer_networks  func.sh
+assignment2  assignment4  Command-line-text-processing  embedur_training   training
+goutham@embedurU1:~/Documents$ cd
+goutham@embedurU1:~$ exit
+logout
+Connection to 192.168.56.101 closed.
+vboxuser@Ubuntu2:~/Desktop$ cd 
+vboxuser@Ubuntu2:~$ cd Documents/
+vboxuser@Ubuntu2:~/Documents$ ls
+dir1  example.txt  file_from_server.txt  terminal_client.txt  terminal_ftp_client.txt
+vboxuser@Ubuntu2:~/Documents$ touch file1.txt
+vboxuser@Ubuntu2:~/Documents$ scp file1.txt goutham@192.168.56.101:~/Documents/computer_networks/assignment1/Q1/
+goutham@192.168.56.101's password: 
+file1.txt                                                     100%    0     0.0KB/s   00:00    
+vboxuser@Ubuntu2:~/Documents$ scp goutham@192.168.56.101:~/Documents/computer_networks/assignment1/Q1/file2.txt .
+goutham@192.168.56.101's password: 
+file2.txt                                                     100%    0     0.0KB/s   00:00    
+vboxuser@Ubuntu2:~/Documents$ ls
+dir1         file1.txt  file_from_server.txt  terminal_ftp_client.txt
+example.txt  file2.txt  terminal_client.txt
+vboxuser@Ubuntu2:~/Documents$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/vboxuser/.ssh/id_rsa): key
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in key
+Your public key has been saved in key.pub
+The key fingerprint is:
+SHA256:gZN3z58CbXd/1M46i3aEsyNmTrlTZrnIT/Nlpk9pJeQ vboxuser@Ubuntu2
+The key's randomart image is:
++---[RSA 3072]----+
+|                 |
+|       o         |
+|      + o .   .  |
+|       o o + o  .|
+|        S . =oE =|
+|           +Bo.B+|
+|         .o=+=ooX|
+|         .Bo==+B.|
+|         +o=oo=+.|
++----[SHA256]-----+
+vboxuser@Ubuntu2:~/Documents$ ssh-copy-id goutham@192.168.56.101
+/usr/bin/ssh-copy-id: ERROR: No identities found
+vboxuser@Ubuntu2:~/Documents$ ssh-copy-id -i key.pub goutham@192.168.56.101
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "key.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+goutham@192.168.56.101's password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'goutham@192.168.56.101'"
+and check to make sure that only the key(s) you wanted were added.
+
+vboxuser@Ubuntu2:~/Documents$ touch file3.txt
+vboxuser@Ubuntu2:~/Documents$ scp file3.txt goutham@192.168.56.101
+vboxuser@Ubuntu2:~/Documents$ scp file3.txt goutham@192.168.56.101:~/Documents/computer_networks/assignment1/Q1/
+goutham@192.168.56.101's password: 
+file3.txt                                                     100%    0     0.0KB/s   00:00    
+vboxuser@Ubuntu2:~/Documents$ scp file3.txt goutham@192.168.56.101:~/Documents/computer_networks/assignment1/Q1/
+goutham@192.168.56.101's password: 
+file3.txt                                                     100%    0     0.0KB/s   00:00    
+vboxuser@Ubuntu2:~/Documents$ scp file3.txt goutham@192.168.56.101:~/Documents/computer_networks/assignment1/Q1/
+goutham@192.168.56.101's password: 
+Permission denied, please try again.
+goutham@192.168.56.101's password: 
+file3.txt                                                     100%    0     0.0KB/s   00:00    
+vboxuser@Ubuntu2:~/Documents$ ssh-copy-id -i key.pub goutham@192.168.56.101:~/Documents/computer_networks/assignment1/Q1/
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "key.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: ERROR: ssh: Could not resolve hostname 192.168.56.101:~/Documents/computer_networks/assignment1/Q1/: Name or service not known
+
+vboxuser@Ubuntu2:~/Documents$ ssh-copy-id -i key.pub goutham@192.168.56.101
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "key.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: WARNING: All keys were skipped because they already exist on the remote system.
+		(if you think this is a mistake, you may want to use -f option)
+
+vboxuser@Ubuntu2:~/Documents$ touch terminal.txt

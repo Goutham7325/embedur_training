@@ -1,0 +1,116 @@
+vboxuser@Ubuntu2:~/Desktop$ sudo apt install
+[sudo] password for vboxuser: 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 325 not upgraded.
+vboxuser@Ubuntu2:~/Desktop$ sudo apt update
+Hit:1 http://in.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:5 http://security.ubuntu.com/ubuntu jammy-security/main i386 Packages [778 kB]
+Get:6 http://in.archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [962 kB]
+Get:7 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3,017 kB]
+Get:8 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3,285 kB]     
+Get:9 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [430 kB]        
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/main amd64 DEP-11 Metadata [54.5 kB]   
+Get:11 http://in.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [499 kB]          
+Get:12 http://security.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [14.1 kB]
+Get:13 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [5,238 kB]   
+Get:14 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 DEP-11 Metadata [114 kB]
+Get:15 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [998 kB]     
+Get:16 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 c-n-f Metadata [19.2 kB]
+Get:17 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [5,413 kB]  
+Get:18 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 DEP-11 Metadata [208 B]
+Get:19 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1,018 kB]
+Get:20 http://security.ubuntu.com/ubuntu jammy-security/universe i386 Packages [686 kB]        
+Get:21 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [1,028 kB]  
+Get:22 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 DEP-11 Metadata [212 B]
+Get:23 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 DEP-11 Metadata [125 kB]
+Get:24 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe i386 Packages [797 kB]       
+Get:25 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,256 kB]    
+Get:26 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [22.7 kB]
+Get:27 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 DEP-11 Metadata [208 B]
+Get:28 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 DEP-11 Metadata [360 kB]
+Get:29 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [30.4 kB]
+Get:30 http://in.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 DEP-11 Metadata [940 B]
+Get:31 http://in.archive.ubuntu.com/ubuntu jammy-backports/main amd64 DEP-11 Metadata [7,300 B]
+Get:32 http://in.archive.ubuntu.com/ubuntu jammy-backports/restricted amd64 DEP-11 Metadata [212 B]
+Get:33 http://in.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 DEP-11 Metadata [10.2 kB]
+Get:34 http://in.archive.ubuntu.com/ubuntu jammy-backports/multiverse amd64 DEP-11 Metadata [212 B]
+Fetched 26.5 MB in 9s (2,875 kB/s)                                                             
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+328 packages can be upgraded. Run 'apt list --upgradable' to see them.
+vboxuser@Ubuntu2:~/Desktop$ sudo apt install telnetd -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  openbsd-inetd tcpd
+The following NEW packages will be installed:
+  openbsd-inetd tcpd telnetd
+0 upgraded, 3 newly installed, 0 to remove and 328 not upgraded.
+Need to get 92.2 kB of archives.
+After this operation, 318 kB of additional disk space will be used.
+Get:1 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 tcpd amd64 7.6.q-31build2 [25.2 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 openbsd-inetd amd64 0.20160825-5 [26.3 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 telnetd amd64 0.17-44build1 [40.7 kB]
+Fetched 92.2 kB in 1s (75.2 kB/s)
+Selecting previously unselected package tcpd.
+(Reading database ... 207936 files and directories currently installed.)
+Preparing to unpack .../tcpd_7.6.q-31build2_amd64.deb ...
+Unpacking tcpd (7.6.q-31build2) ...
+Selecting previously unselected package openbsd-inetd.
+Preparing to unpack .../openbsd-inetd_0.20160825-5_amd64.deb ...
+Unpacking openbsd-inetd (0.20160825-5) ...
+Selecting previously unselected package telnetd.
+Preparing to unpack .../telnetd_0.17-44build1_amd64.deb ...
+Unpacking telnetd (0.17-44build1) ...
+Setting up tcpd (7.6.q-31build2) ...
+Setting up openbsd-inetd (0.20160825-5) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/inetd.service → /lib/systemd/system/
+inetd.service.
+Setting up telnetd (0.17-44build1) ...
+Adding user telnetd to group utmp
+Processing triggers for man-db (2.10.2-1) ...
+vboxuser@Ubuntu2:~/Desktop$ telnet 192.168.56.101
+Trying 192.168.56.101...
+Connected to 192.168.56.101.
+Escape character is '^]'.
+Ubuntu 22.04.5 LTS
+embedurU1 login: Raja@1234
+Password: 
+
+Login incorrect
+embedurU1 login: goutham 
+Password: 
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-101-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+81 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+19 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Thu Mar  5 13:45:35 IST 2026 from 192.168.56.102 on pts/1
+goutham@embedurU1:~$ whoami
+goutham
+goutham@embedurU1:~$ hostname
+embedurU1
+goutham@embedurU1:~$ exit
+logout
+Connection closed by foreign host.
+vboxuser@Ubuntu2:~/Desktop$ 
+

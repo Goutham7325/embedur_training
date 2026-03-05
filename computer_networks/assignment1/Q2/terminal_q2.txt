@@ -1,0 +1,93 @@
+vboxuser@Ubuntu2:~/Desktop$ ftp 192.168.56.101
+Connected to 192.168.56.101.
+220 (vsFTPd 3.0.5)
+Name (192.168.56.101:vboxuser): goutham
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> echo "FTP test file" > ftp_test.txt
+?Invalid command.
+ftp> bye
+221 Goodbye.
+vboxuser@Ubuntu2:~/Desktop$ echo "FTP Test file" > ftp_test.txt
+vboxuser@Ubuntu2:~/Desktop$ ftp 192.168.56.101
+Connected to 192.168.56.101.
+220 (vsFTPd 3.0.5)
+Name (192.168.56.101:vboxuser): goutham
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> pwd
+Remote directory: /home/goutham
+ftp> cd D
+Desktop		Documents	Downloads
+ftp> cd Documents/computer_networks/assignment1/Q2/
+250 Directory successfully changed.
+ftp> put ftp_test.txt 
+local: ftp_test.txt remote: ftp_test.txt
+229 Entering Extended Passive Mode (|||10618|)
+150 Ok to send data.
+100% |***************************************************|    14       22.93 KiB/s    00:00 ETA
+226 Transfer complete.
+14 bytes sent in 00:00 (3.69 KiB/s)
+ftp> ls
+229 Entering Extended Passive Mode (|||14440|)
+150 Here comes the directory listing.
+-rw-------    1 1000     1000           14 Mar 05 13:16 ftp_test.txt
+226 Directory send OK.
+ftp> ls
+229 Entering Extended Passive Mode (|||41326|)
+150 Here comes the directory listing.
+-rw-rw-r--    1 1000     1000            0 Mar 05 13:17 ftp_from_server.txt
+-rw-------    1 1000     1000           14 Mar 05 13:16 ftp_test.txt
+226 Directory send OK.
+ftp> get ftp_from_server.txt
+local: ftp_from_server.txt remote: ftp_from_server.txt
+229 Entering Extended Passive Mode (|||29223|)
+150 Opening BINARY mode data connection for ftp_from_server.txt (0 bytes).
+     0        0.00 KiB/s 
+226 Transfer complete.
+ftp> bye
+221 Goodbye.
+vboxuser@Ubuntu2:~/Desktop$ sftp 192.168.56.101
+ssh: connect to host 192.168.56.101 port 22: Connection refused
+Connection closed.  
+Connection closed
+vboxuser@Ubuntu2:~/Desktop$ sftp 192.168.56.101
+vboxuser@192.168.56.101's password: 
+Permission denied, please try again.
+vboxuser@192.168.56.101's password: 
+Permission denied, please try again.
+vboxuser@192.168.56.101's password: 
+
+[1]+  Stopped                 sftp 192.168.56.101
+vboxuser@Ubuntu2:~/Desktop$ sftp goutham@192.168.56.101
+goutham@192.168.56.101's password: 
+Connected to 192.168.56.101.
+sftp> put f
+ftp_from_server.txt     ftp_test.txt            
+sftp> cwd
+Invalid command.
+sftp> pwd
+Remote working directory: /home/goutham
+sftp> cd Documents/computer_networks/a
+assignment1/    assignment1_2/  
+sftp> cd Documents/computer_networks/assignment1/Q2
+sftp> pwd
+Remote working directory: /home/goutham/Documents/computer_networks/assignment1/Q2
+sftp> put f
+ftp_from_server.txt     ftp_test.txt            
+sftp> put ftp_test.txt 
+Uploading ftp_test.txt to /home/goutham/Documents/computer_networks/assignment1/Q2/ftp_test.txt
+ftp_test.txt                                                  100%   14     2.2KB/s   00:00    
+sftp> get sftp_from_server.txt 
+Fetching /home/goutham/Documents/computer_networks/assignment1/Q2/sftp_from_server.txt to sftp_from_server.txt
+sftp> ls
+ftp_test.txt            sftp_from_server.txt    
+sftp> bye
+vboxuser@Ubuntu2:~/Desktop$ touch terminal_q2.txt
+

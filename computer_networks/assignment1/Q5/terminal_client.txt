@@ -1,0 +1,39 @@
+vboxuser@Ubuntu2:~/Desktop$ hostname -I
+10.0.2.15 192.168.56.105 fd17:625c:f037:2:d501:8b37:7f4f:66df fd17:625c:f037:2:2d66:6d27:382a:31c7 
+vboxuser@Ubuntu2:~/Desktop$ sudo arping 192.168.56.101
+[sudo] password for vboxuser: 
+ARPING 192.168.56.101
+60 bytes from 08:00:27:71:e8:40 (192.168.56.101): index=0 time=897.544 usec
+60 bytes from 08:00:27:71:e8:40 (192.168.56.101): index=1 time=783.734 usec
+60 bytes from 08:00:27:71:e8:40 (192.168.56.101): index=2 time=999.265 usec
+60 bytes from 08:00:27:71:e8:40 (192.168.56.101): index=3 time=538.194 usec
+^C
+--- 192.168.56.101 statistics ---
+4 packets transmitted, 4 packets received,   0% unanswered (0 extra)
+rtt min/avg/max/std-dev = 0.538/0.805/0.999/0.172 ms
+vboxuser@Ubuntu2:~/Desktop$ sudo ifconfig enp0s3 192.168.56.150
+vboxuser@Ubuntu2:~/Desktop$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:1a:d5:d1 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.150/24 brd 192.168.56.255 scope global noprefixroute enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fd17:625c:f037:2:d501:8b37:7f4f:66df/64 scope global temporary dynamic 
+       valid_lft 86209sec preferred_lft 14209sec
+    inet6 fd17:625c:f037:2:2d66:6d27:382a:31c7/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86209sec preferred_lft 14209sec
+    inet6 fe80::3b57:7d82:c48c:f8ad/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:05:84:cd brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.105/24 brd 192.168.56.255 scope global dynamic noprefixroute enp0s8
+       valid_lft 510sec preferred_lft 510sec
+    inet6 fe80::2df7:200b:7fee:61ec/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+vboxuser@Ubuntu2:~/Desktop$ 
+

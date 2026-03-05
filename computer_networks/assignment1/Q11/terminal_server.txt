@@ -1,0 +1,267 @@
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ ip route
+default via 10.0.3.2 dev enp0s8 proto dhcp metric 101 
+10.0.3.0/24 dev enp0s8 proto kernel scope link src 10.0.3.15 metric 101 
+169.254.0.0/16 dev enp0s3 scope link metric 1000 
+192.168.56.0/24 dev enp0s3 proto kernel scope link src 192.168.56.101 metric 102 
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ ping 192.168.56.101
+PING 192.168.56.101 (192.168.56.101) 56(84) bytes of data.
+64 bytes from 192.168.56.101: icmp_seq=1 ttl=64 time=0.043 ms
+64 bytes from 192.168.56.101: icmp_seq=2 ttl=64 time=0.038 ms
+64 bytes from 192.168.56.101: icmp_seq=3 ttl=64 time=0.040 ms
+64 bytes from 192.168.56.101: icmp_seq=4 ttl=64 time=0.039 ms
+^C
+--- 192.168.56.101 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3052ms
+rtt min/avg/max/mdev = 0.038/0.040/0.043/0.002 ms
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ arp -a
+? (192.168.56.100) at 08:00:27:27:92:d9 [ether] on enp0s3
+? (192.168.56.0) at <incomplete> on enp0s3
+_gateway (10.0.3.2) at 52:55:0a:00:03:02 [ether] on enp0s8
+? (192.168.56.1) at 0a:00:27:00:00:13 [ether] on enp0s3
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.3.2        0.0.0.0         UG    101    0        0 enp0s8
+10.0.3.0        0.0.0.0         255.255.255.0   U     101    0        0 enp0s8
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 enp0s3
+192.168.56.0    0.0.0.0         255.255.255.0   U     102    0        0 enp0s3
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  _gateway (10.0.3.2)  4.509 ms  4.242 ms  3.395 ms
+ 2  * * *
+ 3  * * *
+ 4  * * *
+ 5  * * *
+ 6  * * *
+ 7  * * *
+ 8  * * *
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *^C
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ iwconfig
+lo        no wireless extensions.
+
+enp0s3    no wireless extensions.
+
+enp0s8    no wireless extensions.
+
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ ip route
+default via 10.0.3.2 dev enp0s8 proto dhcp metric 101 
+10.0.3.0/24 dev enp0s8 proto kernel scope link src 10.0.3.15 metric 101 
+169.254.0.0/16 dev enp0s3 scope link metric 1000 
+192.168.56.0/24 dev enp0s3 proto kernel scope link src 192.168.56.101 metric 102 
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ sudo tcpdump -i enp0s8 port 67 or port 68 -n
+[sudo] password for goutham: 
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+16:30:01.526088 IP 0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 08:00:27:81:c0:56, length 300
+16:30:01.526994 IP 10.0.3.2.67 > 255.255.255.255.68: BOOTP/DHCP, Reply, length 548
+16:30:04.517421 IP 0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 08:00:27:81:c0:56, length 300
+16:30:04.519207 IP 10.0.3.2.67 > 255.255.255.255.68: BOOTP/DHCP, Reply, length 548
+16:30:04.519563 IP 0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 08:00:27:81:c0:56, length 300
+16:30:04.520265 IP 10.0.3.2.67 > 255.255.255.255.68: BOOTP/DHCP, Reply, length 548
+^C
+6 packets captured
+6 packets received by filter
+0 packets dropped by kernel
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ sudo tcpdump -i enp0s8 port 67 or port 68 -w dhcp_capture.pcap
+tcpdump: listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+^C2 packets captured
+2 packets received by filter
+0 packets dropped by kernel
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ ls
+dhcp_capture.pcap
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ sudo apt install wireshark
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libdouble-conversion3 libmd4c0 libminizip1 libpcre2-16-0 libqt5core5a
+  libqt5dbus5 libqt5gui5 libqt5multimedia5 libqt5multimedia5-plugins
+  libqt5multimediagsttools5 libqt5multimediawidgets5 libqt5network5
+  libqt5printsupport5 libqt5svg5 libqt5widgets5 libxcb-xinerama0
+  libxcb-xinput0 qt5-gtk-platformtheme qttranslations5-l10n wireshark-qt
+Suggested packages:
+  qt5-image-formats-plugins qtwayland5
+The following NEW packages will be installed:
+  libdouble-conversion3 libmd4c0 libminizip1 libpcre2-16-0 libqt5core5a
+  libqt5dbus5 libqt5gui5 libqt5multimedia5 libqt5multimedia5-plugins
+  libqt5multimediagsttools5 libqt5multimediawidgets5 libqt5network5
+  libqt5printsupport5 libqt5svg5 libqt5widgets5 libxcb-xinerama0
+  libxcb-xinput0 qt5-gtk-platformtheme qttranslations5-l10n wireshark
+  wireshark-qt
+0 upgraded, 21 newly installed, 0 to remove and 82 not upgraded.
+Need to get 17.0 MB of archives.
+After this operation, 60.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libdouble-conversion3 amd64 3.1.7-4 [39.0 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpcre2-16-0 amd64 10.39-3ubuntu0.1 [203 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libqt5core5a amd64 5.15.3+dfsg-2ubuntu0.2 [2,006 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libmd4c0 amd64 0.4.8-1 [42.0 kB]
+Get:5 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libqt5dbus5 amd64 5.15.3+dfsg-2ubuntu0.2 [222 kB]
+Get:6 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libqt5network5 amd64 5.15.3+dfsg-2ubuntu0.2 [731 kB]
+Get:7 http://in.archive.ubuntu.com/ubuntu jammy/main amd64 libxcb-xinerama0 amd64 1.14-3ubuntu3 [5,414 B]
+Get:8 http://in.archive.ubuntu.com/ubuntu jammy/main amd64 libxcb-xinput0 amd64 1.14-3ubuntu3 [34.3 kB]
+Get:9 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libqt5gui5 amd64 5.15.3+dfsg-2ubuntu0.2 [3,722 kB]
+Get:10 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libqt5widgets5 amd64 5.15.3+dfsg-2ubuntu0.2 [2,561 kB]
+Get:11 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libqt5svg5 amd64 5.15.3-1 [149 kB]
+Get:12 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libminizip1 amd64 1.1-8build1 [20.2 kB]
+Get:13 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libqt5multimedia5 amd64 5.15.3-1 [320 kB]
+Get:14 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libqt5multimediawidgets5 amd64 5.15.3-1 [42.6 kB]
+Get:15 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libqt5multimediagsttools5 amd64 5.15.3-1 [112 kB]
+Get:16 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 libqt5multimedia5-plugins amd64 5.15.3-1 [178 kB]
+Get:17 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libqt5printsupport5 amd64 5.15.3+dfsg-2ubuntu0.2 [214 kB]
+Get:18 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 qt5-gtk-platformtheme amd64 5.15.3+dfsg-2ubuntu0.2 [130 kB]
+Get:19 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 qttranslations5-l10n all 5.15.3-1 [1,983 kB]
+Get:20 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 wireshark-qt amd64 3.6.2-2 [4,269 kB]
+Get:21 http://in.archive.ubuntu.com/ubuntu jammy/universe amd64 wireshark amd64 3.6.2-2 [4,992 B]
+Fetched 17.0 MB in 11s (1,601 kB/s)                                            
+Selecting previously unselected package libdouble-conversion3:amd64.
+(Reading database ... 270659 files and directories currently installed.)
+Preparing to unpack .../00-libdouble-conversion3_3.1.7-4_amd64.deb ...
+Unpacking libdouble-conversion3:amd64 (3.1.7-4) ...
+Selecting previously unselected package libpcre2-16-0:amd64.
+Preparing to unpack .../01-libpcre2-16-0_10.39-3ubuntu0.1_amd64.deb ...
+Unpacking libpcre2-16-0:amd64 (10.39-3ubuntu0.1) ...
+Selecting previously unselected package libqt5core5a:amd64.
+Preparing to unpack .../02-libqt5core5a_5.15.3+dfsg-2ubuntu0.2_amd64.deb ...
+Unpacking libqt5core5a:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Selecting previously unselected package libmd4c0:amd64.
+Preparing to unpack .../03-libmd4c0_0.4.8-1_amd64.deb ...
+Unpacking libmd4c0:amd64 (0.4.8-1) ...
+Selecting previously unselected package libqt5dbus5:amd64.
+Preparing to unpack .../04-libqt5dbus5_5.15.3+dfsg-2ubuntu0.2_amd64.deb ...
+Unpacking libqt5dbus5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Selecting previously unselected package libqt5network5:amd64.
+Preparing to unpack .../05-libqt5network5_5.15.3+dfsg-2ubuntu0.2_amd64.deb ...
+Unpacking libqt5network5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Selecting previously unselected package libxcb-xinerama0:amd64.
+Preparing to unpack .../06-libxcb-xinerama0_1.14-3ubuntu3_amd64.deb ...
+Unpacking libxcb-xinerama0:amd64 (1.14-3ubuntu3) ...
+Selecting previously unselected package libxcb-xinput0:amd64.
+Preparing to unpack .../07-libxcb-xinput0_1.14-3ubuntu3_amd64.deb ...
+Unpacking libxcb-xinput0:amd64 (1.14-3ubuntu3) ...
+Selecting previously unselected package libqt5gui5:amd64.
+Preparing to unpack .../08-libqt5gui5_5.15.3+dfsg-2ubuntu0.2_amd64.deb ...
+Unpacking libqt5gui5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Selecting previously unselected package libqt5widgets5:amd64.
+Preparing to unpack .../09-libqt5widgets5_5.15.3+dfsg-2ubuntu0.2_amd64.deb ...
+Unpacking libqt5widgets5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Selecting previously unselected package libqt5svg5:amd64.
+Preparing to unpack .../10-libqt5svg5_5.15.3-1_amd64.deb ...
+Unpacking libqt5svg5:amd64 (5.15.3-1) ...
+Selecting previously unselected package libminizip1:amd64.
+Preparing to unpack .../11-libminizip1_1.1-8build1_amd64.deb ...
+Unpacking libminizip1:amd64 (1.1-8build1) ...
+Selecting previously unselected package libqt5multimedia5:amd64.
+Preparing to unpack .../12-libqt5multimedia5_5.15.3-1_amd64.deb ...
+Unpacking libqt5multimedia5:amd64 (5.15.3-1) ...
+Selecting previously unselected package libqt5multimediawidgets5:amd64.
+Preparing to unpack .../13-libqt5multimediawidgets5_5.15.3-1_amd64.deb ...
+Unpacking libqt5multimediawidgets5:amd64 (5.15.3-1) ...
+Selecting previously unselected package libqt5multimediagsttools5:amd64.
+Preparing to unpack .../14-libqt5multimediagsttools5_5.15.3-1_amd64.deb ...
+Unpacking libqt5multimediagsttools5:amd64 (5.15.3-1) ...
+Selecting previously unselected package libqt5multimedia5-plugins:amd64.
+Preparing to unpack .../15-libqt5multimedia5-plugins_5.15.3-1_amd64.deb ...
+Unpacking libqt5multimedia5-plugins:amd64 (5.15.3-1) ...
+Selecting previously unselected package libqt5printsupport5:amd64.
+Preparing to unpack .../16-libqt5printsupport5_5.15.3+dfsg-2ubuntu0.2_amd64.deb 
+...
+Unpacking libqt5printsupport5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Selecting previously unselected package qt5-gtk-platformtheme:amd64.
+Preparing to unpack .../17-qt5-gtk-platformtheme_5.15.3+dfsg-2ubuntu0.2_amd64.de
+b ...
+Unpacking qt5-gtk-platformtheme:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Selecting previously unselected package qttranslations5-l10n.
+Preparing to unpack .../18-qttranslations5-l10n_5.15.3-1_all.deb ...
+Unpacking qttranslations5-l10n (5.15.3-1) ...
+Selecting previously unselected package wireshark-qt.
+Preparing to unpack .../19-wireshark-qt_3.6.2-2_amd64.deb ...
+Unpacking wireshark-qt (3.6.2-2) ...
+Selecting previously unselected package wireshark.
+Preparing to unpack .../20-wireshark_3.6.2-2_amd64.deb ...
+Unpacking wireshark (3.6.2-2) ...
+Setting up libdouble-conversion3:amd64 (3.1.7-4) ...
+Setting up libxcb-xinput0:amd64 (1.14-3ubuntu3) ...
+Setting up libminizip1:amd64 (1.1-8build1) ...
+Setting up libpcre2-16-0:amd64 (10.39-3ubuntu0.1) ...
+Setting up libxcb-xinerama0:amd64 (1.14-3ubuntu3) ...
+Setting up qttranslations5-l10n (5.15.3-1) ...
+Setting up libqt5core5a:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Setting up libqt5dbus5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Setting up libmd4c0:amd64 (0.4.8-1) ...
+Setting up libqt5network5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Setting up libqt5gui5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Setting up libqt5widgets5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Setting up qt5-gtk-platformtheme:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Setting up libqt5multimedia5:amd64 (5.15.3-1) ...
+Setting up libqt5printsupport5:amd64 (5.15.3+dfsg-2ubuntu0.2) ...
+Setting up libqt5multimediawidgets5:amd64 (5.15.3-1) ...
+Setting up libqt5multimediagsttools5:amd64 (5.15.3-1) ...
+Setting up libqt5multimedia5-plugins:amd64 (5.15.3-1) ...
+Setting up libqt5svg5:amd64 (5.15.3-1) ...
+Setting up wireshark-qt (3.6.2-2) ...
+Setting up wireshark (3.6.2-2) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.13) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu3) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu3) ...
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ wireshark dhcp_capture.pcap
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ sudo apt update
+Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:2 http://in.archive.ubuntu.com/ubuntu jammy InRelease
+Get:3 http://in.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Hit:4 http://in.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Get:5 http://in.archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [962 kB]
+Get:6 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3,285 kB]
+Get:7 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,256 kB]
+Fetched 5,631 kB in 3s (1,931 kB/s)                                            
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+82 packages can be upgraded. Run 'apt list --upgradable' to see them.
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ sudo apt install telnetd -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+telnetd is already the newest version (0.17-44build1).
+0 upgraded, 0 newly installed, 0 to remove and 82 not upgraded.
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ sudo systemctl start inetd
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ sudo netstat -tulnp | grep 23
+tcp        0      0 0.0.0.0:23              0.0.0.0:*               LISTEN      816/inetd           
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:71:e8:40 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.101/24 brd 192.168.56.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 353sec preferred_lft 353sec
+    inet6 fe80::793c:ee1d:90fc:27f/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:81:c0:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.3.15/24 brd 10.0.3.255 scope global dynamic noprefixroute enp0s8
+       valid_lft 80407sec preferred_lft 80407sec
+    inet6 fd17:625c:f037:3:1769:337a:f3b7:f7de/64 scope global temporary dynamic 
+       valid_lft 86091sec preferred_lft 14091sec
+    inet6 fd17:625c:f037:3:b4fc:84c8:4d75:2ea9/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86091sec preferred_lft 14091sec
+    inet6 fe80::8003:dbb4:50d5:e292/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q7$ cd ..
+goutham@embedurU1:~/Documents/computer_networks/assignment1$ mkdir Q11
+goutham@embedurU1:~/Documents/computer_networks/assignment1$ cd Q11
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q11$ touch terminal_server.txt terminal_client.txt
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q11$

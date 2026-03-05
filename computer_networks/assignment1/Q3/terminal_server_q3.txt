@@ -1,0 +1,345 @@
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo apt install tcpdump
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+tcpdump is already the newest version (4.99.1-3ubuntu0.2).
+tcpdump set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 82 not upgraded.
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ ip a
+\1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:71:e8:40 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.101/24 brd 192.168.56.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 334sec preferred_lft 334sec
+    inet6 fe80::793c:ee1d:90fc:27f/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:81:c0:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.3.15/24 brd 10.0.3.255 scope global dynamic noprefixroute enp0s8
+       valid_lft 81932sec preferred_lft 81932sec
+    inet6 fd17:625c:f037:3:8492:f323:3d93:1418/64 scope global temporary dynamic 
+       valid_lft 86352sec preferred_lft 14352sec
+    inet6 fd17:625c:f037:3:b4fc:84c8:4d75:2ea9/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86352sec preferred_lft 14352sec
+    inet6 fe80::8003:dbb4:50d5:e292/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo systemctl start ssh
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo systemctl status ssh
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2026-03-05 13:38:33 IST; 8s ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+    Process: 6740 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
+   Main PID: 6741 (sshd)
+      Tasks: 1 (limit: 12896)
+     Memory: 1.7M
+        CPU: 21ms
+     CGroup: /system.slice/ssh.service
+             └─6741 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Mar 05 13:38:33 embedurU1 systemd[1]: Starting OpenBSD Secure Shell server...
+Mar 05 13:38:33 embedurU1 sshd[6741]: Server listening on 0.0.0.0 port 22.
+Mar 05 13:38:33 embedurU1 sshd[6741]: Server listening on :: port 22.
+Mar 05 13:38:33 embedurU1 systemd[1]: Started OpenBSD Secure Shell server.
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo tcpdump -i enp0s3 host 192.168.56.102
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on enp0s3, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+13:39:21.105449 IP 192.168.56.102 > embedurU1: ICMP echo request, id 2, seq 1, length 64
+13:39:21.105468 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 2, seq 1, length 64
+13:39:22.107673 IP 192.168.56.102 > embedurU1: ICMP echo request, id 2, seq 2, length 64
+13:39:22.107704 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 2, seq 2, length 64
+13:39:23.110726 IP 192.168.56.102 > embedurU1: ICMP echo request, id 2, seq 3, length 64
+13:39:23.110764 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 2, seq 3, length 64
+13:39:24.117053 IP 192.168.56.102 > embedurU1: ICMP echo request, id 2, seq 4, length 64
+13:39:24.117076 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 2, seq 4, length 64
+13:39:25.119434 IP 192.168.56.102 > embedurU1: ICMP echo request, id 2, seq 5, length 64
+13:39:25.119469 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 2, seq 5, length 64
+13:39:26.122110 IP 192.168.56.102 > embedurU1: ICMP echo request, id 2, seq 6, length 64
+13:39:26.122136 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 2, seq 6, length 64
+13:39:27.122557 IP 192.168.56.102 > embedurU1: ICMP echo request, id 2, seq 7, length 64
+13:39:27.122584 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 2, seq 7, length 64
+^C
+14 packets captured
+14 packets received by filter
+0 packets dropped by kernel
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo tcpdump -i enp0s3 icmp
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on enp0s3, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+13:39:52.337082 IP 192.168.56.102 > embedurU1: ICMP echo request, id 3, seq 1, length 64
+13:39:52.337127 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 3, seq 1, length 64
+13:39:53.371376 IP 192.168.56.102 > embedurU1: ICMP echo request, id 3, seq 2, length 64
+13:39:53.371395 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 3, seq 2, length 64
+13:39:54.373134 IP 192.168.56.102 > embedurU1: ICMP echo request, id 3, seq 3, length 64
+13:39:54.373153 IP embedurU1 > 192.168.56.102: ICMP echo reply, id 3, seq 3, length 64
+^C
+6 packets captured
+6 packets received by filter
+0 packets dropped by kernel
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo tcpdump -i enp0s3 port 22
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on enp0s3, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+13:40:20.274453 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [S], seq 3081250535, win 64240, options [mss 1460,sackOK,TS val 562886469 ecr 0,nop,wscale 7], length 0
+13:40:20.274516 IP embedurU1.ssh > 192.168.56.102.55682: Flags [S.], seq 2128520518, ack 3081250536, win 65160, options [mss 1460,sackOK,TS val 3859405307 ecr 562886469,nop,wscale 7], length 0
+13:40:20.275238 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 1, win 502, options [nop,nop,TS val 562886470 ecr 3859405307], length 0
+13:40:20.276245 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 1:43, ack 1, win 502, options [nop,nop,TS val 562886471 ecr 3859405307], length 42: SSH: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10
+13:40:20.276255 IP embedurU1.ssh > 192.168.56.102.55682: Flags [.], ack 43, win 509, options [nop,nop,TS val 3859405308 ecr 562886471], length 0
+13:40:20.287619 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 1:43, ack 43, win 509, options [nop,nop,TS val 3859405320 ecr 562886471], length 42: SSH: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.13
+13:40:20.288656 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 43, win 502, options [nop,nop,TS val 562886483 ecr 3859405320], length 0
+13:40:20.289544 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 43:1579, ack 43, win 502, options [nop,nop,TS val 562886484 ecr 3859405320], length 1536
+13:40:20.289696 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 43:1155, ack 1579, win 497, options [nop,nop,TS val 3859405322 ecr 562886484], length 1112
+13:40:20.292523 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 1579:1627, ack 1155, win 512, options [nop,nop,TS val 562886487 ecr 3859405322], length 48
+13:40:20.298863 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 1155:1679, ack 1627, win 497, options [nop,nop,TS val 3859405331 ecr 562886487], length 524
+13:40:20.312765 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 1627:1643, ack 1679, win 512, options [nop,nop,TS val 562886508 ecr 3859405331], length 16
+13:40:20.453919 IP embedurU1.ssh > 192.168.56.102.55682: Flags [.], ack 1643, win 497, options [nop,nop,TS val 3859405486 ecr 562886508], length 0
+13:40:20.455783 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 1643:1687, ack 1679, win 512, options [nop,nop,TS val 562886650 ecr 3859405486], length 44
+13:40:20.455879 IP embedurU1.ssh > 192.168.56.102.55682: Flags [.], ack 1687, win 497, options [nop,nop,TS val 3859405488 ecr 562886650], length 0
+13:40:20.456188 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 1679:1723, ack 1687, win 497, options [nop,nop,TS val 3859405488 ecr 562886650], length 44
+13:40:20.457427 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 1687:1755, ack 1723, win 512, options [nop,nop,TS val 562886652 ecr 3859405488], length 68
+13:40:20.467645 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 1723:1775, ack 1755, win 497, options [nop,nop,TS val 3859405500 ecr 562886652], length 52
+13:40:20.508615 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 1775, win 512, options [nop,nop,TS val 562886704 ecr 3859405500], length 0
+13:40:25.088474 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 1755:1903, ack 1775, win 512, options [nop,nop,TS val 562891285 ecr 3859405500], length 148
+13:40:25.127863 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 1775:1803, ack 1903, win 496, options [nop,nop,TS val 3859410160 ecr 562891285], length 28
+13:40:25.128912 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 1803, win 512, options [nop,nop,TS val 562891326 ecr 3859410160], length 0
+13:40:25.129107 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 1903:2015, ack 1803, win 512, options [nop,nop,TS val 562891327 ecr 3859410160], length 112
+13:40:25.171531 IP embedurU1.ssh > 192.168.56.102.55682: Flags [.], ack 2015, win 496, options [nop,nop,TS val 3859410204 ecr 562891327], length 0
+13:40:25.251259 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 1803:2431, ack 2015, win 496, options [nop,nop,TS val 3859410283 ecr 562891327], length 628
+13:40:25.292592 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 2431, win 512, options [nop,nop,TS val 562891490 ecr 3859410283], length 0
+13:40:25.292608 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 2431:2475, ack 2015, win 496, options [nop,nop,TS val 3859410325 ecr 562891490], length 44
+13:40:25.293253 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 2475, win 512, options [nop,nop,TS val 562891491 ecr 3859410325], length 0
+13:40:25.293789 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2015:2467, ack 2475, win 512, options [nop,nop,TS val 562891491 ecr 3859410325], length 452
+13:40:25.293845 IP embedurU1.ssh > 192.168.56.102.55682: Flags [.], ack 2467, win 493, options [nop,nop,TS val 3859410326 ecr 562891491], length 0
+13:40:25.295651 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 2475:2583, ack 2467, win 493, options [nop,nop,TS val 3859410328 ecr 562891491], length 108
+13:40:25.296562 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 2583:3275, ack 2467, win 493, options [nop,nop,TS val 3859410329 ecr 562891491], length 692
+13:40:25.297170 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3275, win 512, options [nop,nop,TS val 562891495 ecr 3859410328], length 0
+13:40:25.327992 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3275:3391, ack 2467, win 493, options [nop,nop,TS val 3859410360 ecr 562891495], length 116
+13:40:25.370237 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3391, win 512, options [nop,nop,TS val 562891568 ecr 3859410360], length 0
+13:40:31.025986 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2467:2503, ack 3391, win 512, options [nop,nop,TS val 562897226 ecr 3859410360], length 36
+13:40:31.027891 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3391:3427, ack 2503, win 493, options [nop,nop,TS val 3859416060 ecr 562897226], length 36
+13:40:31.030070 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3427, win 512, options [nop,nop,TS val 562897230 ecr 3859416060], length 0
+13:40:31.253137 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2503:2539, ack 3427, win 512, options [nop,nop,TS val 562897454 ecr 3859416060], length 36
+13:40:31.255020 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3427:3463, ack 2539, win 493, options [nop,nop,TS val 3859416287 ecr 562897454], length 36
+13:40:31.256084 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3463, win 512, options [nop,nop,TS val 562897457 ecr 3859416287], length 0
+13:40:31.432324 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2539:2575, ack 3463, win 512, options [nop,nop,TS val 562897632 ecr 3859416287], length 36
+13:40:31.433708 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3463:3499, ack 2575, win 493, options [nop,nop,TS val 3859416466 ecr 562897632], length 36
+13:40:31.434511 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3499, win 512, options [nop,nop,TS val 562897636 ecr 3859416466], length 0
+13:40:31.681806 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2575:2611, ack 3499, win 512, options [nop,nop,TS val 562897883 ecr 3859416466], length 36
+13:40:31.683293 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3499:3535, ack 2611, win 493, options [nop,nop,TS val 3859416715 ecr 562897883], length 36
+13:40:31.683940 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3535, win 512, options [nop,nop,TS val 562897885 ecr 3859416715], length 0
+13:40:31.832279 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2611:2647, ack 3535, win 512, options [nop,nop,TS val 562898033 ecr 3859416715], length 36
+13:40:31.833019 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3535:3571, ack 2647, win 493, options [nop,nop,TS val 3859416865 ecr 562898033], length 36
+13:40:31.833699 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3571, win 512, options [nop,nop,TS val 562898035 ecr 3859416865], length 0
+13:40:32.304868 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2647:2683, ack 3571, win 512, options [nop,nop,TS val 562898506 ecr 3859416865], length 36
+13:40:32.305791 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3571:3607, ack 2683, win 493, options [nop,nop,TS val 3859417338 ecr 562898506], length 36
+13:40:32.306690 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3607, win 512, options [nop,nop,TS val 562898508 ecr 3859417338], length 0
+13:40:33.087096 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2683:2719, ack 3607, win 512, options [nop,nop,TS val 562899289 ecr 3859417338], length 36
+13:40:33.088116 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3607:3643, ack 2719, win 493, options [nop,nop,TS val 3859418120 ecr 562899289], length 36
+13:40:33.089178 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3643, win 512, options [nop,nop,TS val 562899291 ecr 3859418120], length 0
+13:40:33.664041 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2719:2755, ack 3643, win 512, options [nop,nop,TS val 562899866 ecr 3859418120], length 36
+13:40:33.665464 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3643:3679, ack 2755, win 493, options [nop,nop,TS val 3859418697 ecr 562899866], length 36
+13:40:33.667583 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3679, win 512, options [nop,nop,TS val 562899869 ecr 3859418697], length 0
+13:40:33.923165 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2755:2791, ack 3679, win 512, options [nop,nop,TS val 562900126 ecr 3859418697], length 36
+13:40:33.923862 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3679:3715, ack 2791, win 493, options [nop,nop,TS val 3859418956 ecr 562900126], length 36
+13:40:33.924408 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3715, win 512, options [nop,nop,TS val 562900127 ecr 3859418956], length 0
+13:40:34.060841 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2791:2827, ack 3715, win 512, options [nop,nop,TS val 562900263 ecr 3859418956], length 36
+13:40:34.061330 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3715:3751, ack 2827, win 493, options [nop,nop,TS val 3859419093 ecr 562900263], length 36
+13:40:34.061743 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3751, win 512, options [nop,nop,TS val 562900264 ecr 3859419093], length 0
+13:40:34.250307 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2827:2863, ack 3751, win 512, options [nop,nop,TS val 562900453 ecr 3859419093], length 36
+13:40:34.251038 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3751:3787, ack 2863, win 493, options [nop,nop,TS val 3859419283 ecr 562900453], length 36
+13:40:34.251849 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3787, win 512, options [nop,nop,TS val 562900454 ecr 3859419283], length 0
+13:40:34.986152 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2863:2899, ack 3787, win 512, options [nop,nop,TS val 562901189 ecr 3859419283], length 36
+13:40:34.988350 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3787:3823, ack 2899, win 493, options [nop,nop,TS val 3859420020 ecr 562901189], length 36
+13:40:34.989359 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3823, win 512, options [nop,nop,TS val 562901192 ecr 3859420020], length 0
+13:40:35.249443 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2899:2935, ack 3823, win 512, options [nop,nop,TS val 562901452 ecr 3859420020], length 36
+13:40:35.251500 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3823:3955, ack 2935, win 493, options [nop,nop,TS val 3859420283 ecr 562901452], length 132
+13:40:35.252707 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3955, win 515, options [nop,nop,TS val 562901456 ecr 3859420283], length 0
+13:40:38.305233 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2935:2971, ack 3955, win 515, options [nop,nop,TS val 562904509 ecr 3859420283], length 36
+13:40:38.306716 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3955:3991, ack 2971, win 493, options [nop,nop,TS val 3859423339 ecr 562904509], length 36
+13:40:38.307701 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 3991, win 515, options [nop,nop,TS val 562904512 ecr 3859423339], length 0
+13:40:39.341274 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 2971:3007, ack 3991, win 515, options [nop,nop,TS val 562905546 ecr 3859423339], length 36
+13:40:39.342771 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 3991:4027, ack 3007, win 493, options [nop,nop,TS val 3859424375 ecr 562905546], length 36
+13:40:39.343464 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 4027, win 515, options [nop,nop,TS val 562905549 ecr 3859424375], length 0
+13:40:39.552132 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 3007:3043, ack 4027, win 515, options [nop,nop,TS val 562905756 ecr 3859424375], length 36
+13:40:39.553359 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 4027:4063, ack 3043, win 493, options [nop,nop,TS val 3859424585 ecr 562905756], length 36
+13:40:39.554361 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 4063, win 515, options [nop,nop,TS val 562905760 ecr 3859424585], length 0
+13:40:39.778652 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 3043:3079, ack 4063, win 515, options [nop,nop,TS val 562905984 ecr 3859424585], length 36
+13:40:39.780203 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 4063:4099, ack 3079, win 493, options [nop,nop,TS val 3859424812 ecr 562905984], length 36
+13:40:39.782292 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 4099, win 515, options [nop,nop,TS val 562905987 ecr 3859424812], length 0
+13:40:40.348149 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 3079:3115, ack 4099, win 515, options [nop,nop,TS val 562906554 ecr 3859424812], length 36
+13:40:40.349778 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 4099:4159, ack 3115, win 493, options [nop,nop,TS val 3859425382 ecr 562906554], length 60
+13:40:40.351226 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 4159, win 515, options [nop,nop,TS val 562906557 ecr 3859425382], length 0
+13:40:40.355108 IP embedurU1.ssh > 192.168.56.102.55682: Flags [P.], seq 4159:4335, ack 3115, win 493, options [nop,nop,TS val 3859425387 ecr 562906557], length 176
+13:40:40.356386 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 4335, win 515, options [nop,nop,TS val 562906562 ecr 3859425387], length 0
+13:40:40.356974 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 3115:3151, ack 4335, win 515, options [nop,nop,TS val 562906563 ecr 3859425387], length 36
+13:40:40.357259 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [P.], seq 3151:3211, ack 4335, win 515, options [nop,nop,TS val 562906563 ecr 3859425387], length 60
+13:40:40.357535 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [F.], seq 3211, ack 4335, win 515, options [nop,nop,TS val 562906563 ecr 3859425387], length 0
+13:40:40.357612 IP embedurU1.ssh > 192.168.56.102.55682: Flags [.], ack 3212, win 493, options [nop,nop,TS val 3859425390 ecr 562906563], length 0
+13:40:40.365474 IP embedurU1.ssh > 192.168.56.102.55682: Flags [F.], seq 4335, ack 3212, win 493, options [nop,nop,TS val 3859425397 ecr 562906563], length 0
+13:40:40.366188 IP 192.168.56.102.55682 > embedurU1.ssh: Flags [.], ack 4336, win 515, options [nop,nop,TS val 562906572 ecr 3859425397], length 0
+^C
+97 packets captured
+97 packets received by filter
+0 packets dropped by kernel
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo tcpdump -i enp0s3 src 192.168.56.101
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on enp0s3, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+13:41:30.937533 IP embedurU1.ssh > 192.168.56.102.43272: Flags [S.], seq 961671929, ack 3024572760, win 65160, options [mss 1460,sackOK,TS val 3859475970 ecr 562957171,nop,wscale 7], length 0
+13:41:30.939255 IP embedurU1.ssh > 192.168.56.102.43272: Flags [.], ack 43, win 509, options [nop,nop,TS val 3859475971 ecr 562957173], length 0
+13:41:30.950703 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 1:43, ack 43, win 509, options [nop,nop,TS val 3859475983 ecr 562957173], length 42: SSH: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.13
+13:41:30.952763 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 43:1155, ack 1579, win 497, options [nop,nop,TS val 3859475985 ecr 562957186], length 1112
+13:41:30.961429 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 1155:1679, ack 1627, win 497, options [nop,nop,TS val 3859475993 ecr 562957189], length 524
+13:41:30.998627 IP embedurU1.ssh > 192.168.56.102.43272: Flags [.], ack 1643, win 497, options [nop,nop,TS val 3859476031 ecr 562957206], length 0
+13:41:30.999224 IP embedurU1.ssh > 192.168.56.102.43272: Flags [.], ack 1687, win 497, options [nop,nop,TS val 3859476031 ecr 562957233], length 0
+13:41:30.999355 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 1679:1723, ack 1687, win 497, options [nop,nop,TS val 3859476031 ecr 562957233], length 44
+13:41:31.010899 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 1723:1775, ack 1755, win 497, options [nop,nop,TS val 3859476043 ecr 562957234], length 52
+13:41:35.270531 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 1775:1803, ack 1903, win 496, options [nop,nop,TS val 3859480303 ecr 562961467], length 28
+13:41:35.311656 IP embedurU1.ssh > 192.168.56.102.43272: Flags [.], ack 2015, win 496, options [nop,nop,TS val 3859480344 ecr 562961508], length 0
+13:41:35.370183 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 1803:2431, ack 2015, win 496, options [nop,nop,TS val 3859480402 ecr 562961508], length 628
+13:41:35.412929 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 2431:2475, ack 2015, win 496, options [nop,nop,TS val 3859480445 ecr 562961649], length 44
+13:41:35.413995 IP embedurU1.ssh > 192.168.56.102.43272: Flags [.], ack 2467, win 493, options [nop,nop,TS val 3859480446 ecr 562961650], length 0
+13:41:35.415279 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 2475:2583, ack 2467, win 493, options [nop,nop,TS val 3859480447 ecr 562961650], length 108
+13:41:35.415720 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 2583:2835, ack 2467, win 493, options [nop,nop,TS val 3859480448 ecr 562961650], length 252
+13:41:35.415778 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 2835:3319, ack 2467, win 493, options [nop,nop,TS val 3859480448 ecr 562961650], length 484
+13:41:35.442063 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3319:3435, ack 2467, win 493, options [nop,nop,TS val 3859480474 ecr 562961653], length 116
+13:41:39.666113 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3435:3471, ack 2503, win 493, options [nop,nop,TS val 3859484698 ecr 562965900], length 36
+13:41:39.784900 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3471:3507, ack 2539, win 493, options [nop,nop,TS val 3859484817 ecr 562966022], length 36
+13:41:40.000205 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3507:3559, ack 2575, win 493, options [nop,nop,TS val 3859485032 ecr 562966237], length 52
+13:41:40.004099 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3559:3787, ack 2575, win 493, options [nop,nop,TS val 3859485036 ecr 562966240], length 228
+13:41:40.005032 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3787:3903, ack 2575, win 493, options [nop,nop,TS val 3859485037 ecr 562966240], length 116
+13:41:41.356301 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3903:3939, ack 2611, win 493, options [nop,nop,TS val 3859486388 ecr 562967594], length 36
+13:41:41.486599 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3939:3975, ack 2647, win 493, options [nop,nop,TS val 3859486519 ecr 562967723], length 36
+13:41:41.601015 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 3975:4027, ack 2683, win 493, options [nop,nop,TS val 3859486633 ecr 562967839], length 52
+13:41:41.603651 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4027:4335, ack 2683, win 493, options [nop,nop,TS val 3859486636 ecr 562967841], length 308
+13:41:42.890522 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4335:4371, ack 2719, win 493, options [nop,nop,TS val 3859487923 ecr 562969130], length 36
+13:41:43.862376 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4371:4407, ack 2755, win 493, options [nop,nop,TS val 3859488894 ecr 562970100], length 36
+13:41:44.859669 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4407:4451, ack 2791, win 493, options [nop,nop,TS val 3859489892 ecr 562971099], length 44
+13:41:45.465649 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4451:4495, ack 2827, win 493, options [nop,nop,TS val 3859490498 ecr 562971706], length 44
+13:41:50.577404 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4495:4531, ack 2863, win 493, options [nop,nop,TS val 3859495609 ecr 562976820], length 36
+13:41:50.892210 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4531:4567, ack 2899, win 493, options [nop,nop,TS val 3859495924 ecr 562977135], length 36
+13:41:51.073160 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4567:4603, ack 2935, win 493, options [nop,nop,TS val 3859496105 ecr 562977316], length 36
+13:41:51.297918 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4603:4639, ack 2971, win 493, options [nop,nop,TS val 3859496330 ecr 562977542], length 36
+13:41:51.783038 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4639:4699, ack 3007, win 493, options [nop,nop,TS val 3859496815 ecr 562978025], length 60
+13:41:51.787665 IP embedurU1.ssh > 192.168.56.102.43272: Flags [P.], seq 4699:4875, ack 3007, win 493, options [nop,nop,TS val 3859496820 ecr 562978029], length 176
+13:41:51.790816 IP embedurU1.ssh > 192.168.56.102.43272: Flags [.], ack 3104, win 493, options [nop,nop,TS val 3859496823 ecr 562978034], length 0
+13:41:51.799190 IP embedurU1.ssh > 192.168.56.102.43272: Flags [F.], seq 4875, ack 3104, win 493, options [nop,nop,TS val 3859496831 ecr 562978034], length 0
+^C
+39 packets captured
+39 packets received by filter
+0 packets dropped by kernel
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ sudo tcpdump -i enp0s3 -w capture.pcap
+tcpdump: listening on enp0s3, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+^C101 packets captured
+102 packets received by filter
+0 packets dropped by kernel
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ tcpdump -r capture.pcap
+reading from file capture.pcap, link-type EN10MB (Ethernet), snapshot length 262144
+13:42:24.561947 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [S], seq 2152950935, win 64240, options [mss 1460,sackOK,TS val 563010825 ecr 0,nop,wscale 7], length 0
+13:42:24.561990 IP embedurU1.ssh > 192.168.56.102.39356: Flags [S.], seq 513305382, ack 2152950936, win 65160, options [mss 1460,sackOK,TS val 3859529594 ecr 563010825,nop,wscale 7], length 0
+13:42:24.563030 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 1, win 502, options [nop,nop,TS val 563010826 ecr 3859529594], length 0
+13:42:24.563030 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 1:43, ack 1, win 502, options [nop,nop,TS val 563010826 ecr 3859529594], length 42: SSH: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10
+13:42:24.563132 IP embedurU1.ssh > 192.168.56.102.39356: Flags [.], ack 43, win 509, options [nop,nop,TS val 3859529595 ecr 563010826], length 0
+13:42:24.573895 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 1:43, ack 43, win 509, options [nop,nop,TS val 3859529606 ecr 563010826], length 42: SSH: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.13
+13:42:24.574841 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 43, win 502, options [nop,nop,TS val 563010838 ecr 3859529606], length 0
+13:42:24.575415 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 43:1155, ack 43, win 509, options [nop,nop,TS val 3859529607 ecr 563010838], length 1112
+13:42:24.576678 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 1155, win 508, options [nop,nop,TS val 563010840 ecr 3859529607], length 0
+13:42:24.577182 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 43:1579, ack 1155, win 508, options [nop,nop,TS val 563010840 ecr 3859529607], length 1536
+13:42:24.577302 IP embedurU1.ssh > 192.168.56.102.39356: Flags [.], ack 1579, win 497, options [nop,nop,TS val 3859529609 ecr 563010840], length 0
+13:42:24.578994 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 1579:1627, ack 1155, win 508, options [nop,nop,TS val 563010842 ecr 3859529609], length 48
+13:42:24.583154 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 1155:1679, ack 1627, win 497, options [nop,nop,TS val 3859529615 ecr 563010842], length 524
+13:42:24.589770 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 1627:1643, ack 1679, win 512, options [nop,nop,TS val 563010853 ecr 3859529615], length 16
+13:42:24.630665 IP embedurU1.ssh > 192.168.56.102.39356: Flags [.], ack 1643, win 497, options [nop,nop,TS val 3859529663 ecr 563010853], length 0
+13:42:24.631815 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 1643:1687, ack 1679, win 512, options [nop,nop,TS val 563010895 ecr 3859529663], length 44
+13:42:24.631912 IP embedurU1.ssh > 192.168.56.102.39356: Flags [.], ack 1687, win 497, options [nop,nop,TS val 3859529664 ecr 563010895], length 0
+13:42:24.632105 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 1679:1723, ack 1687, win 497, options [nop,nop,TS val 3859529664 ecr 563010895], length 44
+13:42:24.633231 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 1687:1755, ack 1723, win 512, options [nop,nop,TS val 563010896 ecr 3859529664], length 68
+13:42:24.642810 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 1723:1775, ack 1755, win 497, options [nop,nop,TS val 3859529675 ecr 563010896], length 52
+13:42:24.684733 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 1775, win 512, options [nop,nop,TS val 563010948 ecr 3859529675], length 0
+13:42:27.923532 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 1755:1903, ack 1775, win 512, options [nop,nop,TS val 563014188 ecr 3859529675], length 148
+13:42:27.963572 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 1775:1803, ack 1903, win 496, options [nop,nop,TS val 3859532996 ecr 563014188], length 28
+13:42:27.964693 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 1803, win 512, options [nop,nop,TS val 563014229 ecr 3859532996], length 0
+13:42:27.964694 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 1903:2015, ack 1803, win 512, options [nop,nop,TS val 563014230 ecr 3859532996], length 112
+13:42:28.004785 IP embedurU1.ssh > 192.168.56.102.39356: Flags [.], ack 2015, win 496, options [nop,nop,TS val 3859533037 ecr 563014230], length 0
+13:42:28.073553 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 1803:2431, ack 2015, win 496, options [nop,nop,TS val 3859533106 ecr 563014230], length 628
+13:42:28.114744 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 2431, win 512, options [nop,nop,TS val 563014380 ecr 3859533106], length 0
+13:42:28.114759 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 2431:2475, ack 2015, win 496, options [nop,nop,TS val 3859533147 ecr 563014380], length 44
+13:42:28.115411 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 2475, win 512, options [nop,nop,TS val 563014380 ecr 3859533147], length 0
+13:42:28.115702 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2015:2467, ack 2475, win 512, options [nop,nop,TS val 563014381 ecr 3859533147], length 452
+13:42:28.115738 IP embedurU1.ssh > 192.168.56.102.39356: Flags [.], ack 2467, win 493, options [nop,nop,TS val 3859533148 ecr 563014381], length 0
+13:42:28.116918 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 2475:2583, ack 2467, win 493, options [nop,nop,TS val 3859533149 ecr 563014381], length 108
+13:42:28.119106 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 2583:3275, ack 2467, win 493, options [nop,nop,TS val 3859533151 ecr 563014381], length 692
+13:42:28.119774 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3275, win 512, options [nop,nop,TS val 563014385 ecr 3859533149], length 0
+13:42:28.142802 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3275:3391, ack 2467, win 493, options [nop,nop,TS val 3859533175 ecr 563014385], length 116
+13:42:28.183903 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3391, win 512, options [nop,nop,TS val 563014449 ecr 3859533175], length 0
+13:42:31.832088 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2467:2503, ack 3391, win 512, options [nop,nop,TS val 563018098 ecr 3859533175], length 36
+13:42:31.833205 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3391:3427, ack 2503, win 493, options [nop,nop,TS val 3859536865 ecr 563018098], length 36
+13:42:31.834495 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3427, win 512, options [nop,nop,TS val 563018101 ecr 3859536865], length 0
+13:42:32.124483 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2503:2539, ack 3427, win 512, options [nop,nop,TS val 563018391 ecr 3859536865], length 36
+13:42:32.126108 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3427:3463, ack 2539, win 493, options [nop,nop,TS val 3859537158 ecr 563018391], length 36
+13:42:32.126681 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3463, win 512, options [nop,nop,TS val 563018394 ecr 3859537158], length 0
+13:42:32.262830 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2539:2575, ack 3463, win 512, options [nop,nop,TS val 563018530 ecr 3859537158], length 36
+13:42:32.264429 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3463:3499, ack 2575, win 493, options [nop,nop,TS val 3859537296 ecr 563018530], length 36
+13:42:32.265208 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3499, win 512, options [nop,nop,TS val 563018532 ecr 3859537296], length 0
+13:42:32.529501 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2575:2611, ack 3499, win 512, options [nop,nop,TS val 563018796 ecr 3859537296], length 36
+13:42:32.531757 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3499:3535, ack 2611, win 493, options [nop,nop,TS val 3859537564 ecr 563018796], length 36
+13:42:32.532947 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3535, win 512, options [nop,nop,TS val 563018800 ecr 3859537564], length 0
+13:42:32.680882 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2611:2647, ack 3535, win 512, options [nop,nop,TS val 563018948 ecr 3859537564], length 36
+13:42:32.682401 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3535:3571, ack 2647, win 493, options [nop,nop,TS val 3859537714 ecr 563018948], length 36
+13:42:32.683170 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3571, win 512, options [nop,nop,TS val 563018951 ecr 3859537714], length 0
+13:42:33.279210 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2647:2683, ack 3571, win 512, options [nop,nop,TS val 563019546 ecr 3859537714], length 36
+13:42:33.279938 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3571:3607, ack 2683, win 493, options [nop,nop,TS val 3859538312 ecr 563019546], length 36
+13:42:33.280913 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3607, win 512, options [nop,nop,TS val 563019548 ecr 3859538312], length 0
+13:42:33.681041 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2683:2719, ack 3607, win 512, options [nop,nop,TS val 563019949 ecr 3859538312], length 36
+13:42:33.682951 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3607:3643, ack 2719, win 493, options [nop,nop,TS val 3859538715 ecr 563019949], length 36
+13:42:33.683899 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3643, win 512, options [nop,nop,TS val 563019952 ecr 3859538715], length 0
+13:42:33.830601 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2719:2755, ack 3643, win 512, options [nop,nop,TS val 563020098 ecr 3859538715], length 36
+13:42:33.831549 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3643:3679, ack 2755, win 493, options [nop,nop,TS val 3859538864 ecr 563020098], length 36
+13:42:33.832411 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3679, win 512, options [nop,nop,TS val 563020101 ecr 3859538864], length 0
+13:42:34.030090 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2755:2791, ack 3679, win 512, options [nop,nop,TS val 563020298 ecr 3859538864], length 36
+13:42:34.030616 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3679:3715, ack 2791, win 493, options [nop,nop,TS val 3859539063 ecr 563020298], length 36
+13:42:34.031379 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3715, win 512, options [nop,nop,TS val 563020299 ecr 3859539063], length 0
+13:42:34.163020 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2791:2827, ack 3715, win 512, options [nop,nop,TS val 563020431 ecr 3859539063], length 36
+13:42:34.163402 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3715:3751, ack 2827, win 493, options [nop,nop,TS val 3859539195 ecr 563020431], length 36
+13:42:34.163877 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3751, win 512, options [nop,nop,TS val 563020432 ecr 3859539195], length 0
+13:42:34.365226 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2827:2863, ack 3751, win 512, options [nop,nop,TS val 563020633 ecr 3859539195], length 36
+13:42:34.366480 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3751:3787, ack 2863, win 493, options [nop,nop,TS val 3859539398 ecr 563020633], length 36
+13:42:34.367748 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3787, win 512, options [nop,nop,TS val 563020636 ecr 3859539398], length 0
+13:42:34.880568 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2863:2899, ack 3787, win 512, options [nop,nop,TS val 563021149 ecr 3859539398], length 36
+13:42:34.881254 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3787:3823, ack 2899, win 493, options [nop,nop,TS val 3859539913 ecr 563021149], length 36
+13:42:34.883013 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3823, win 512, options [nop,nop,TS val 563021151 ecr 3859539913], length 0
+13:42:36.318634 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2899:2935, ack 3823, win 512, options [nop,nop,TS val 563022587 ecr 3859539913], length 36
+13:42:36.319992 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3823:3875, ack 2935, win 493, options [nop,nop,TS val 3859541352 ecr 563022587], length 52
+13:42:36.321011 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3875, win 512, options [nop,nop,TS val 563022590 ecr 3859541352], length 0
+13:42:36.321112 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3875:3999, ack 2935, win 493, options [nop,nop,TS val 3859541353 ecr 563022590], length 124
+13:42:36.322469 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 3999, win 512, options [nop,nop,TS val 563022592 ecr 3859541353], length 0
+13:42:37.400353 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2935:2971, ack 3999, win 512, options [nop,nop,TS val 563023667 ecr 3859541353], length 36
+13:42:37.401495 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 3999:4035, ack 2971, win 493, options [nop,nop,TS val 3859542433 ecr 563023667], length 36
+13:42:37.403730 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 4035, win 512, options [nop,nop,TS val 563023672 ecr 3859542433], length 0
+13:42:37.719655 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 2971:3007, ack 4035, win 512, options [nop,nop,TS val 563023990 ecr 3859542433], length 36
+13:42:37.721174 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 4035:4071, ack 3007, win 493, options [nop,nop,TS val 3859542753 ecr 563023990], length 36
+13:42:37.722437 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 4071, win 512, options [nop,nop,TS val 563023992 ecr 3859542753], length 0
+13:42:37.931646 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 3007:3043, ack 4071, win 512, options [nop,nop,TS val 563024201 ecr 3859542753], length 36
+13:42:37.932783 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 4071:4107, ack 3043, win 493, options [nop,nop,TS val 3859542965 ecr 563024201], length 36
+13:42:37.933572 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 4107, win 512, options [nop,nop,TS val 563024204 ecr 3859542965], length 0
+13:42:38.085812 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 3043:3079, ack 4107, win 512, options [nop,nop,TS val 563024356 ecr 3859542965], length 36
+13:42:38.087246 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 4107:4143, ack 3079, win 493, options [nop,nop,TS val 3859543119 ecr 563024356], length 36
+13:42:38.088765 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 4143, win 512, options [nop,nop,TS val 563024359 ecr 3859543119], length 0
+13:42:38.391478 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 3079:3115, ack 4143, win 512, options [nop,nop,TS val 563024661 ecr 3859543119], length 36
+13:42:38.393759 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 4143:4203, ack 3115, win 493, options [nop,nop,TS val 3859543426 ecr 563024661], length 60
+13:42:38.395144 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 4203, win 512, options [nop,nop,TS val 563024665 ecr 3859543426], length 0
+13:42:38.397197 IP embedurU1.ssh > 192.168.56.102.39356: Flags [P.], seq 4203:4379, ack 3115, win 493, options [nop,nop,TS val 3859543429 ecr 563024665], length 176
+13:42:38.398367 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 4379, win 515, options [nop,nop,TS val 563024669 ecr 3859543429], length 0
+13:42:38.399033 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 3115:3151, ack 4379, win 515, options [nop,nop,TS val 563024669 ecr 3859543429], length 36
+13:42:38.399034 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [P.], seq 3151:3211, ack 4379, win 515, options [nop,nop,TS val 563024669 ecr 3859543429], length 60
+13:42:38.399034 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [F.], seq 3211, ack 4379, win 515, options [nop,nop,TS val 563024670 ecr 3859543429], length 0
+13:42:38.399375 IP embedurU1.ssh > 192.168.56.102.39356: Flags [.], ack 3212, win 493, options [nop,nop,TS val 3859543431 ecr 563024669], length 0
+13:42:38.405717 IP embedurU1.ssh > 192.168.56.102.39356: Flags [F.], seq 4379, ack 3212, win 493, options [nop,nop,TS val 3859543438 ecr 563024669], length 0
+13:42:38.406593 IP 192.168.56.102.39356 > embedurU1.ssh: Flags [.], ack 4380, win 515, options [nop,nop,TS val 563024677 ecr 3859543438], length 0
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ touch terminal_server_q3.txt
+goutham@embedurU1:~/Documents/computer_networks/assignment1/Q3$ 
+
+
