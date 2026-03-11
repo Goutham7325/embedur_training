@@ -1,0 +1,85 @@
+1. Ethernet interfaces
+Ethernet interfaces are identified by the system using predictable network interface names. These names can appear as eno1 or enp0s25.
+
+2.Identify Ethernet interfaces
+To quickly identify all available Ethernet interfaces, you can use the ip command from iproute2 as shown below.
+
+ip addr
+
+Eg:
+ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s25: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:16:3e:e2:52:42 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.102.66.200/24 brd 10.102.66.255 scope global dynamic eth0
+       valid_lft 3257sec preferred_lft 3257sec
+    inet6 fe80::216:3eff:fee2:5242/64 scope link
+       valid_lft forever preferred_lft forever
+
+3. IP addressing
+The following section describes the process of configuring your system’s IP address and default gateway needed for communicating on a local area network and the 
+Internet.
+3.1 Temporary IP address assignment
+For temporary network configurations, you can use the ip command which is also found on most other GNU/Linux operating systems.
+The ip command allows you to configure settings which take effect immediately – however they are not persistent and will be lost after a reboot.
+
+3.1.1 To temporarily configure an IP address, you can use the ip command in the following manner. 
+Modify the IP address and subnet mask to match your network requirements.
+sudo ip addr add 10.102.66.200/24 dev enp0s25
+
+3.1.2 The ip command can then be used to set the link up or down.
+ip link set dev enp0s25 up
+ip link set dev enp0s25 down
+
+3.1.3 To verify the IP address configuration of enp0s25, you can use the ip command in the following manner:
+ip address show dev enp0s25
+
+Eg:
+ip address show dev enp0s25
+10: enp0s25: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:16:3e:e2:52:42 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.102.66.200/24 brd 10.102.66.255 scope global dynamic eth0
+       valid_lft 2857sec preferred_lft 2857sec
+    inet6 fe80::216:3eff:fee2:5242/64 scope link
+       valid_lft forever preferred_lft forever6
+
+3.1.4 To configure a default gateway, you can use the ip command in the following manner. Modify the default gateway address to match your network requirements.
+sudo ip route add default via 10.102.66.1
+
+3.1.5 You can also use the ip command to verify your default gateway configuration, as follows:
+ip route show
+
+Eg:
+ip route show
+default via 10.102.66.1 dev eth0 proto dhcp src 10.102.66.200 metric 100
+10.102.66.0/24 dev eth0 proto kernel scope link src 10.102.66.200
+10.102.66.1 dev eth0 proto dhcp scope link src 10.102.66.200 metric 100 
+
+3.1.6 If you no longer need this configuration and wish to purge all IP configuration from an interface, you can use the ip command with the flush option:
+ip addr flush eth0
+
+4. Summary
+4.1 The following command lists all network interfaces:
+ip link show
+
+4.2 A network interface must be enabled (brought up) before it can send or receive packets.
+sudo ip link set enp0s3 up
+
+This command activates the interface and allows the kernel networking subsystem to begin handling packets through the Ethernet driver.
+To disable the interface:
+sudo ip link set enp0s3 down
+
+4.3 Once the interface is enabled, an IP address can be assigned.
+sudo ip addr add 192.168.1.10/24 dev enp0s3
+
+4.4 To allow communication outside the local network, a default gateway must be configured.
+sudo ip route add default via 192.168.1.1
+
+4.5 To display routing information:
+ip route show
+
