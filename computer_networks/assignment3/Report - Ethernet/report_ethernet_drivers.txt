@@ -1,0 +1,216 @@
+Linux Kernel Handling of Ethernet Devices and Network Interfaces
+1. Introduction
+
+The Linux Kernel provides a powerful and modular networking subsystem that supports a wide range of networking technologies including Ethernet, Wi-Fi, and virtual
+networking devices. Ethernet is the most widely used technology for local area networks (LANs), and the Linux kernel provides extensive mechanisms to handle Ethernet
+communication efficiently.
+
+The kernel networking subsystem manages the interaction between user applications, networking protocols, and network hardware. It provides abstractions that allow
+applications to communicate over networks without interacting directly with hardware. This abstraction is achieved through device drivers, network interfaces, and
+the kernel networking stack.
+
+2. Linux Networking Architecture
+
+The Linux networking subsystem follows a layered architecture similar to the TCP/IP model. Data travels through multiple layers before reaching the physical network
+interface.
+
+Applications send data through sockets, which are handled by the kernel networking subsystem. The kernel processes the data through protocol layers before 
+transmitting it through the Ethernet driver.
+
+Reference:
+Linux Kernel Networking Documentation
+https://www.kernel.org/doc/html/latest/networking/index.html
+
+3. Ethernet Device Drivers
+
+Ethernet communication begins with network device drivers, which allow the Linux kernel to interact with hardware network interface cards (NICs). These drivers 
+manage the low-level operations of the network device including initialization, packet transmission, packet reception, and interrupt handling.
+
+Ethernet drivers are located in the Linux kernel source tree under:
+
+drivers/net/ethernet/
+
+Drivers implement a set of operations defined in the kernel networking framework. One important function is:
+
+ndo_start_xmit()
+
+This function is responsible for transmitting packets from the kernel to the network interface card.
+When a packet arrives from the network, the NIC triggers an interrupt. The driver retrieves the packet and passes it to the networking subsystem for processing.
+
+Reference:
+Linux Kernel Documentation – Network Driver Interface
+https://docs.kernel.org/networking/driver.html
+
+4. Network Interfaces and the net_device Structure
+
+In Linux, every network device is represented as a network interface such as:
+
+-eth0
+-ens33
+-enp0s3
+
+These interfaces are managed internally using the net_device structure.
+
+The net_device structure stores information such as:
+
+- MAC address
+-device state
+-MTU
+-supported features
+-driver operations
+
+Kernel Network Device Abstraction
+User Application
+       │
+       ▼
+Networking Stack
+       │
+       ▼
+net_device Structure
+       │
+       ▼
+Ethernet Driver
+       │
+       ▼
+Network Interface Card
+
+This abstraction allows the kernel to support many different hardware devices using the same networking framework.
+
+Reference:
+Linux Kernel Documentation – Network Devices
+https://docs.kernel.org/networking/netdevices.html
+
+5. Packet Representation Using sk_buff
+
+Inside the Linux networking subsystem, packets are stored in a structure called socket buffer (sk_buff).
+
+The sk_buff structure contains:
+
+-packet data
+-protocol headers
+-metadata
+-pointers to other buffers
+
+sk_buff Packet Structure
++-----------------------------------+
+| sk_buff Structure                 |
++-----------------------------------+
+| Packet Metadata                   |
+| Protocol Information              |
+| Pointers to Network Headers       |
+| Transport Headers                 |
+| Data Payload                      |
++-----------------------------------+
+
+This design allows different networking layers to manipulate packet headers without copying the entire packet.
+
+Reference:
+Linux Kernel Networking APIs
+https://docs.kernel.org/networking/kapi.html
+
+6. Packet Transmission Process
+
+When an application sends data through a socket, the packet travels through the networking stack before reaching the network device.
+
+Packet Transmission Flow
+Application
+    │
+    ▼
+Socket API
+    │
+    ▼
+TCP / UDP
+    │
+    ▼
+IP Layer
+    │
+    ▼
+Ethernet Frame Creation
+    │
+    ▼
+Network Driver
+    │
+    ▼
+Network Interface Card
+    │
+    ▼
+Physical Network
+
+The kernel encapsulates the data into an Ethernet frame containing:
+
+-Destination MAC address
+-Source MAC address
+-EtherType
+-Payload
+
+7. Packet Reception Process
+
+When a packet arrives from the network:
+
+  1.The NIC receives the frame
+  2.The NIC generates an interrupt
+  3.The driver retrieves the packet
+  4.The packet is stored in an sk_buff
+  5.The networking stack processes it
+  6.The packet is delivered to the correct application
+
+8. NAPI and Interrupt Handling
+
+High network traffic can generate large numbers of interrupts. The Linux kernel uses NAPI (New API) to improve efficiency.
+
+NAPI combines:
+
+interrupt-driven processing
+polling-based packet handling
+
+NAPI Processing Model
+Incoming Packets
+        │
+        ▼
+NIC Interrupt
+        │
+        ▼
+Kernel disables interrupts
+        │
+        ▼
+NAPI Polling
+        │
+        ▼
+Batch Packet Processing
+
+This reduces CPU overhead during heavy network traffic.
+
+Reference:
+Linux Kernel Networking Subsystem Documentation
+https://www.kernel.org/doc/html/latest/networking/index.html
+
+9. Advanced Linux Networking Features
+
+The Linux networking subsystem supports many advanced capabilities:
+
+-VLAN tagging
+-Network namespaces
+-Traffic control
+-Packet filtering (Netfilter)
+-Bridging and routing
+
+These features allow Linux systems to operate as:
+
+-routers
+-firewalls
+-network appliances
+-virtualization platforms
+
+
+Summary
+
+1.The Linux Kernel provides a modular networking subsystem supporting Ethernet communication.
+2.Ethernet device drivers allow the kernel to interact with network interface hardware.
+3.Each network device is represented as a network interface such as eth0 or enp0s3.
+4.The kernel uses the net_device structure to manage network interfaces.
+5.Packets in the kernel are stored using the sk_buff (socket buffer) structure.
+6.Data from applications passes through TCP/UDP, IP, and Ethernet layers before transmission.
+7.Ethernet frames contain source MAC, destination MAC, EtherType, and payload.
+8.Incoming packets trigger interrupts that are handled by device drivers.
+9.NAPI improves performance by combining interrupt and polling mechanisms.
+10.Linux networking supports advanced features such as VLANs, routing, bridging, and packet filtering.
