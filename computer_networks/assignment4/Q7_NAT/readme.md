@@ -14,9 +14,7 @@ In this setup, **two routers** are used:
 
 ---
 
-#  Topology<img width="500" height="511" alt="Screenshot 2026-03-20 232432" src="https://github.com/user-attachments/assets/986401db-7250-4369-beee-24fbe18f1215" />
-
-
+#  Topology
 
 PCs → Switch → Router1 (NAT) → Router2 (ISP)
 
