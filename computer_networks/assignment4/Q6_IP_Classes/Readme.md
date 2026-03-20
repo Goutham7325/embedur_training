@@ -10,7 +10,7 @@ IP classes are determined by the **first octet** of the IP address.
 
 ---
 
-#  Given IPs Analysis
+#  Classifying IP's
 
 ##  1. 10.1.1.1
 
@@ -68,6 +68,4 @@ IP classes are determined by the **first octet** of the IP address.
 ---
 
  
-- **Class C** uses /24 mask  
 
-Each class has a defined IP range used for network identification.
