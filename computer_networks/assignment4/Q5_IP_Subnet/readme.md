@@ -42,6 +42,8 @@ A trunk link carries traffic from multiple VLANs using **802.1Q tagging**.
 <img width="659" height="485" alt="Screenshot 2026-03-20 222000" src="https://github.com/user-attachments/assets/cfd97b83-bd1d-4016-bd9d-2add09853ed9" />
 <img width="655" height="525" alt="Screenshot 2026-03-20 221953" src="https://github.com/user-attachments/assets/c2642186-802f-4d85-8345-1d989715249a" />
 <img width="680" height="497" alt="Screenshot 2026-03-20 221947" src="https://github.com/user-attachments/assets/951e6b7c-7c21-4424-b4c6-40d21588e99d" />
+<img width="578" height="471" alt="Screenshot 2026-03-20 221939" src="https://github.com/user-attachments/assets/89559861-4865-4490-8c88-7b85cf241ae1" />
+<img width="636" height="501" alt="Screenshot 2026-03-20 221932" src="https://github.com/user-attachments/assets/5c813b03-9b68-45ea-8dc6-0c70cc673d34" />
 
 ---
 
@@ -138,5 +140,4 @@ ping <destination IP>
 ```
 
 
-<img width="578" height="471" alt="Screenshot 2026-03-20 221939" src="https://github.com/user-attachments/assets/89559861-4865-4490-8c88-7b85cf241ae1" />
-<img width="636" height="501" alt="Screenshot 2026-03-20 221932" src="https://github.com/user-attachments/assets/5c813b03-9b68-45ea-8dc6-0c70cc673d34" />
+
