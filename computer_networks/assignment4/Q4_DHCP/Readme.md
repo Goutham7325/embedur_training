@@ -10,35 +10,35 @@ Wireshark captures clearly display these four messages along with transaction ID
 
 # Flowchart
 
-+------------------+
-|   DHCP Client    |
-| (No IP Address)  |
-+--------+---------+
-         |
-         | DHCP Discover (Broadcast)
-         v
-+------------------+
-|   DHCP Server    |
-+--------+---------+
-         |
-         | DHCP Offer (Available IP)
-         v
-+------------------+
-|   DHCP Client    |
-+--------+---------+
-         |
-         | DHCP Request (Accept Offer)
-         v
-+------------------+
-|   DHCP Server    |
-+--------+---------+
-         |
-         | DHCP ACK (Confirm Lease)
-         v
-+------------------+
-|   DHCP Client    |
-| (IP Configured)  |
-+------------------+
++------------------+   
+|   DHCP Client    |  
+| (No IP Address)  |  
++--------+---------+  
+         |  
+         | DHCP Discover (Broadcast)  
+         v  
++------------------+  
+|   DHCP Server    |   
++--------+---------+  
+         |  
+         | DHCP Offer (Available IP)  
+         v  
++------------------+  
+|   DHCP Client    |  
++--------+---------+  
+         |  
+         | DHCP Request (Accept Offer)  
+         v  
++------------------+  
+|   DHCP Server    |    
++--------+---------+  
+         |  
+         | DHCP ACK (Confirm Lease)  
+         v  
++------------------+  
+|   DHCP Client    |  
+| (IP Configured)  |    
++------------------+  
 
 
 # ScreenShots
