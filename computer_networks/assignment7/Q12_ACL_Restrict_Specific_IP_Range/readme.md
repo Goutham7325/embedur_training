@@ -9,6 +9,8 @@ A **Standard ACL** filters traffic based only on **source IP address**.
 ```text
 Standard ACL → checks ONLY source IP
 ```
+<img width="816" height="552" alt="Screenshot 2026-03-26 233007" src="https://github.com/user-attachments/assets/01984140-afce-41fd-89e8-73eb1329d4d8" />
+
 ## 2. Standard ACL Configuration
 ```bash
 enable
