@@ -1,4 +1,4 @@
-#VLAN Communication
+# VLAN Communication
 ## CONFIGURATION
 ### 1. Create VLANs (Both Switches)
 ```bash
