@@ -1,7 +1,4 @@
-<img width="642" height="283" alt="Screenshot 2026-03-26 221458" src="https://github.com/user-attachments/assets/114038ff-884b-45c7-ab61-724522ed9c4e" /># 🖧 Voice VLAN + Data VLAN Configuration (Cisco)
-
----
-
+# Voice VLAN + Data VLAN Configuration (Cisco)
 ## CONCEPT
 
 In this setup:
