@@ -78,6 +78,8 @@ On Switch1 (leave unchanged → mismatch)
 ```bash
 show interfaces trunk
 ```
+<img width="809" height="85" alt="image" src="https://github.com/user-attachments/assets/471ae22b-68f4-4a27-987b-409027c77a6a" />
+
 Fix:
 ```bash
 interface gi0/1
@@ -126,6 +128,13 @@ transport input ssh telnet
 ```bash
 ssh -l admin 192.168.99.1
 ```
+Added PC in VLAN 99
+Updated Topology:
+<img width="579" height="305" alt="image" src="https://github.com/user-attachments/assets/999cb6eb-f332-42af-ad8d-e8016effdc69" />
+
+Command Prompt from PC from VLAN 99
+<img width="872" height="791" alt="image" src="https://github.com/user-attachments/assets/e0b20b59-d175-4b7d-b1a7-e072488ce548" />
+
 
 switchport mode trunk
 ```
