@@ -109,21 +109,30 @@ Outcome:
 
 ###  Network Topology
 <img width="679" height="583" alt="image" src="https://github.com/user-attachments/assets/5704b01b-a3cb-4294-83aa-13875e0edde9" />
+
 ###  PC0 able to ping to Gateway and Web Browser Normally
 <img width="872" height="787" alt="image" src="https://github.com/user-attachments/assets/58e1ccb0-f2ef-42e2-b808-daac3016a217" />
+
 ###  arp Table of PC0 before attack
 <img width="871" height="225" alt="image" src="https://github.com/user-attachments/assets/4ea9d938-a3dc-4d23-b2a6-bb0671c005de" />
+
 ###  PC0 able to browse Server 
 <img width="867" height="646" alt="image" src="https://github.com/user-attachments/assets/a86fbb81-96ca-4c18-be48-9e58017214f3" />
+
 ###  Config of Attacker (PC1)
 <img width="877" height="455" alt="image" src="https://github.com/user-attachments/assets/f5cdf15c-8128-43c3-bd81-b13833609e88" />
+
 ###  MAC Address of Attacker (PC1) modified to that of Gateway's
 <img width="892" height="679" alt="image" src="https://github.com/user-attachments/assets/d9263bb5-cf52-43cc-a4bb-a99215dd5a2a" />
+
 ###  Doing a Constant ping from Attacker (PC1) to PC0
 <img width="869" height="357" alt="image" src="https://github.com/user-attachments/assets/0bba0ca1-217f-4a34-bce6-cba7b2970134" />
+
 ###  Checking the arp table of PC0
 <img width="872" height="258" alt="image" src="https://github.com/user-attachments/assets/a9d20c24-7ab9-475d-b5a3-ea4faf3de283" />
+
 ###  MAC address table of Switch0 modified
 <img width="871" height="367" alt="image" src="https://github.com/user-attachments/assets/e2431baf-7729-43e1-8a59-86939aba475c" />
+
 ###  PC0 Trying to browse the server
 <img width="873" height="638" alt="image" src="https://github.com/user-attachments/assets/41946584-03bc-4052-88aa-829dcdb4102b" />
