@@ -84,6 +84,11 @@ Now try logging into the machine, with:   "ssh 'goutham@192.168.56.101'"
 and check to make sure that only the key(s) you wanted were added.
 
 vboxuser@Ubuntu2:~/Documents$ touch file3.txt
+
+##
+##################################################################### SCP ####################################################################
+##
+
 vboxuser@Ubuntu2:~/Documents$ scp file3.txt goutham@192.168.56.101
 vboxuser@Ubuntu2:~/Documents$ scp file3.txt goutham@192.168.56.101:~/Documents/computer_networks/assignment1/Q1/
 goutham@192.168.56.101's password: 
