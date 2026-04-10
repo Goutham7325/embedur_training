@@ -1,4 +1,4 @@
-## Wi-Fi Devices and Their Capabilities (Example)
+## Wi-Fi Devices and Their Capabilities 
 
 Below are typical day-to-day devices, their wireless properties, and corresponding Wi-Fi generations:
 
