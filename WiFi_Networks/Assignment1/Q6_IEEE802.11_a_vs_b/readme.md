@@ -1,4 +1,4 @@
-## Difference Between IEEE 802.11a and 802.11b (Detailed)
+## Difference Between IEEE 802.11a and 802.11b 
 
 IEEE 802.11a and 802.11b are early Wi-Fi standards that differ significantly in terms of **frequency band, speed, modulation, and performance characteristics**.
 
