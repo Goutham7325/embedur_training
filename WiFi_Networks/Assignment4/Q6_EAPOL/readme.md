@@ -135,3 +135,26 @@ The **Pairwise Transient Key (PTK)** is divided into multiple subkeys:
 ---
 
 ## Summary Flow
+- AP → STA : ANonce
+- STA → AP : SNonce + MIC
+- AP → STA : GTK + MIC
+- STA → AP : ACK
+
+---
+
+## Key Purposes Summary
+
+| Key | Purpose |
+|-----|--------|
+| PMK | Master key (shared secret) |
+| PTK | Session key derived per connection |
+| KCK | Integrity protection (MIC) |
+| KEK | Encrypts key distribution (GTK) |
+| TK  | Encrypts unicast data |
+| GTK | Encrypts broadcast/multicast data |
+
+---
+
+## Conclusion
+
+The **EAPOL 4-way handshake** is essential for secure WiFi communication. It ensures both the client and access point derive fresh encryption keys without transmitting the master key. By splitting the PTK into multiple functional keys, it provides **confidentiality, integrity, and secure key distribution** in wireless networks.
