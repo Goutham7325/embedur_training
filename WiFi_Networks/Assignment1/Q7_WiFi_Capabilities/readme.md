@@ -28,7 +28,8 @@
 | FIPS 140 Mode Support | Yes |
 <img width="1143" height="1008" alt="image" src="https://github.com/user-attachments/assets/0073fcec-c1e4-4cc3-a5c1-24af0127f488" />
 <img width="1036" height="698" alt="image" src="https://github.com/user-attachments/assets/49f3406c-468a-4da7-8d29-3f5575cafb7d" />
-## 5 GHz Wi-Fi Capabilities / Properties
+
+## 5 GHz Wi-Fi Capabilities / Properties  
 
 | Parameter | Observation |
 |---|---|
@@ -56,6 +57,7 @@
 | FIPS 140 Mode Support | Yes |
 <img width="1187" height="998" alt="image" src="https://github.com/user-attachments/assets/702c52d2-e5fa-4e8b-95ca-4104080fc876" />
 <img width="953" height="680" alt="image" src="https://github.com/user-attachments/assets/fec64f33-4b81-4568-be08-1a045429d088" />
+
 ## Differences Between 2.4 GHz and 5 GHz Wi-Fi Capabilities
 
 | Parameter | 2.4 GHz | 5 GHz |
