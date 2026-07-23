@@ -1,4 +1,3 @@
-```markdown
 # AI for Everyone – Coding, Data Processing & Basic ML Assignments
 
 ## Question 1: Customer Sales Analysis
@@ -229,4 +228,3 @@ Develop a complete machine learning solution using a public dataset.
   - Dependencies
   - Steps to run the project
   - Expected outputs
-```
