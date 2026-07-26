@@ -1,0 +1,422 @@
+2026-07-26 20:40:33,483 - INFO - Loading PyTorch model...
+2026-07-26 20:40:33,518 - INFO - Model loaded successfully.
+2026-07-26 20:40:33,519 - INFO - Checking calibration directory...
+2026-07-26 20:40:34,733 - INFO - Validated 50 calibration samples.
+2026-07-26 20:40:34,733 - INFO - Exporting model to ONNX...
+2026-07-26 20:40:47,640 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 20:40:47,668 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 20:40:47,674 - INFO - Removed 1 unused nodes
+2026-07-26 20:40:47,676 - INFO - No unused functions to remove
+2026-07-26 20:40:47,677 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:40:47,688 - INFO - Removed 2 unused nodes
+2026-07-26 20:40:47,689 - INFO - No unused functions to remove
+2026-07-26 20:40:47,690 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:40:47,698 - INFO - No unused functions to remove
+2026-07-26 20:40:47,699 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 20:40:47,706 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 20:40:47,707 - INFO - Verifying ONNX model...
+2026-07-26 20:40:47,746 - INFO - ONNX verification successful.
+2026-07-26 20:40:47,747 - INFO - Part 1 completed successfully.
+2026-07-26 20:42:00,650 - INFO - Loading PyTorch model...
+2026-07-26 20:42:00,694 - INFO - Model loaded successfully.
+2026-07-26 20:42:00,697 - INFO - Checking calibration directory...
+2026-07-26 20:42:00,707 - INFO - Validated 50 calibration samples.
+2026-07-26 20:42:00,708 - INFO - Exporting model to ONNX...
+2026-07-26 20:42:01,469 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 20:42:01,489 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 20:42:01,491 - INFO - Removed 1 unused nodes
+2026-07-26 20:42:01,492 - INFO - No unused functions to remove
+2026-07-26 20:42:01,494 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:42:01,499 - INFO - Removed 2 unused nodes
+2026-07-26 20:42:01,501 - INFO - No unused functions to remove
+2026-07-26 20:42:01,502 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:42:01,507 - INFO - No unused functions to remove
+2026-07-26 20:42:01,507 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 20:42:01,512 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 20:42:01,513 - INFO - Verifying ONNX model...
+2026-07-26 20:42:01,588 - INFO - ONNX verification successful.
+2026-07-26 20:42:01,589 - INFO - ONNX Model Saved and Verified.
+2026-07-26 20:52:36,126 - INFO - Loading PyTorch model...
+2026-07-26 20:52:36,135 - INFO - Model loaded successfully.
+2026-07-26 20:52:36,137 - INFO - Checking calibration directory...
+2026-07-26 20:52:36,155 - INFO - Validated 50 calibration samples.
+2026-07-26 20:52:36,156 - INFO - Exporting model to ONNX...
+2026-07-26 20:52:37,079 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 20:52:37,100 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 20:52:37,102 - INFO - Removed 1 unused nodes
+2026-07-26 20:52:37,103 - INFO - No unused functions to remove
+2026-07-26 20:52:37,106 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:52:37,111 - INFO - Removed 2 unused nodes
+2026-07-26 20:52:37,112 - INFO - No unused functions to remove
+2026-07-26 20:52:37,113 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:52:37,119 - INFO - No unused functions to remove
+2026-07-26 20:52:37,119 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 20:52:37,125 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 20:52:37,126 - INFO - Verifying ONNX model...
+2026-07-26 20:52:37,279 - INFO - ONNX verification successful.
+2026-07-26 20:52:37,281 - INFO - Converting ONNX -> TensorFlow SavedModel...
+2026-07-26 20:52:47,649 - INFO - None
+2026-07-26 20:52:47,650 - INFO - TensorFlow SavedModel created successfully.
+2026-07-26 20:52:47,650 - INFO - Loading SavedModel...
+2026-07-26 20:52:47,653 - ERROR - SavedModel file does not exist at: C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\saved_model\{saved_model.pbtxt|saved_model.pb}
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\2055450595.py", line 17, in main
+    verify_saved_model()
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\1159738017.py", line 5, in verify_saved_model
+    model = tf.saved_model.load(str(SAVED_MODEL_DIR))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\python\saved_model\load.py", line 912, in load
+    result = load_partial(export_dir, None, tags, options)["root"]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\python\saved_model\load.py", line 1016, in load_partial
+    loader_impl.parse_saved_model_with_debug_info(export_dir))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\python\saved_model\loader_impl.py", line 59, in parse_saved_model_with_debug_info
+    saved_model = parse_saved_model(export_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\python\saved_model\loader_impl.py", line 119, in parse_saved_model
+    raise IOError(
+OSError: SavedModel file does not exist at: C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\saved_model\{saved_model.pbtxt|saved_model.pb}
+2026-07-26 20:57:49,577 - INFO - Loading PyTorch model...
+2026-07-26 20:57:49,619 - INFO - Model loaded successfully.
+2026-07-26 20:57:49,622 - INFO - Checking calibration directory...
+2026-07-26 20:57:49,638 - INFO - Validated 50 calibration samples.
+2026-07-26 20:57:49,640 - INFO - Exporting model to ONNX...
+2026-07-26 20:57:50,351 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 20:57:50,376 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 20:57:50,379 - INFO - Removed 1 unused nodes
+2026-07-26 20:57:50,379 - INFO - No unused functions to remove
+2026-07-26 20:57:50,381 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:57:50,387 - INFO - Removed 2 unused nodes
+2026-07-26 20:57:50,389 - INFO - No unused functions to remove
+2026-07-26 20:57:50,390 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:57:50,396 - INFO - No unused functions to remove
+2026-07-26 20:57:50,397 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 20:57:50,402 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 20:57:50,403 - INFO - Verifying ONNX model...
+2026-07-26 20:57:50,506 - INFO - ONNX verification successful.
+2026-07-26 20:57:50,507 - INFO - Converting ONNX -> TensorFlow SavedModel...
+2026-07-26 20:57:54,347 - INFO - [31mERROR:[0m flatbuffer_direct SavedModel export requires optional dependencies: tensorflow, tf_keras. Install them with: uv pip install -U "onnx2tf[tensorflow]"
+
+2026-07-26 20:57:54,348 - ERROR - 
+2026-07-26 20:57:54,348 - ERROR - ONNX -> TensorFlow conversion failed.
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\2055450595.py", line 15, in main
+    convert_to_saved_model()
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\3314619561.py", line 33, in convert_to_saved_model
+    raise RuntimeError(
+RuntimeError: ONNX -> TensorFlow conversion failed.
+2026-07-26 20:59:39,729 - INFO - Loading PyTorch model...
+2026-07-26 20:59:39,801 - INFO - Model loaded successfully.
+2026-07-26 20:59:39,801 - INFO - Checking calibration directory...
+2026-07-26 20:59:39,815 - INFO - Validated 50 calibration samples.
+2026-07-26 20:59:39,819 - INFO - Exporting model to ONNX...
+2026-07-26 20:59:40,459 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 20:59:40,481 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 20:59:40,483 - INFO - Removed 1 unused nodes
+2026-07-26 20:59:40,484 - INFO - No unused functions to remove
+2026-07-26 20:59:40,485 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:59:40,491 - INFO - Removed 2 unused nodes
+2026-07-26 20:59:40,492 - INFO - No unused functions to remove
+2026-07-26 20:59:40,493 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 20:59:40,497 - INFO - No unused functions to remove
+2026-07-26 20:59:40,498 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 20:59:40,503 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 20:59:40,504 - INFO - Verifying ONNX model...
+2026-07-26 20:59:40,566 - INFO - ONNX verification successful.
+2026-07-26 20:59:40,567 - INFO - Converting ONNX -> TensorFlow SavedModel...
+2026-07-26 20:59:58,138 - INFO - None
+2026-07-26 20:59:58,139 - INFO - TensorFlow SavedModel created successfully.
+2026-07-26 20:59:58,139 - INFO - Loading SavedModel...
+2026-07-26 20:59:58,199 - INFO - Available signatures: ['serving_default']
+2026-07-26 21:02:51,187 - INFO - Loading PyTorch model...
+2026-07-26 21:02:51,212 - INFO - Model loaded successfully.
+2026-07-26 21:02:51,213 - INFO - Checking calibration directory...
+2026-07-26 21:02:51,248 - INFO - Validated 50 calibration samples.
+2026-07-26 21:02:51,255 - INFO - Exporting model to ONNX...
+2026-07-26 21:02:51,934 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 21:02:51,963 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 21:02:51,965 - INFO - Removed 1 unused nodes
+2026-07-26 21:02:51,966 - INFO - No unused functions to remove
+2026-07-26 21:02:51,968 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:02:51,973 - INFO - Removed 2 unused nodes
+2026-07-26 21:02:51,974 - INFO - No unused functions to remove
+2026-07-26 21:02:51,975 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:02:51,979 - INFO - No unused functions to remove
+2026-07-26 21:02:51,979 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 21:02:51,984 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 21:02:51,984 - INFO - Verifying ONNX model...
+2026-07-26 21:02:52,102 - INFO - ONNX verification successful.
+2026-07-26 21:02:52,103 - INFO - Converting ONNX -> TensorFlow SavedModel...
+2026-07-26 21:03:02,831 - INFO - None
+2026-07-26 21:03:02,832 - INFO - TensorFlow SavedModel created successfully.
+2026-07-26 21:03:02,833 - INFO - Loading SavedModel...
+2026-07-26 21:03:02,900 - INFO - Available signatures: ['serving_default']
+2026-07-26 21:03:02,902 - INFO - Converting SavedModel -> INT8 TFLite...
+2026-07-26 21:03:03,767 - INFO - Preparing representative dataset...
+2026-07-26 21:03:03,775 - ERROR - tensorflow/lite/kernels/reshape.cc:94 num_input_elements != num_output_elements (0 != 1568)Node number 5 (RESHAPE) failed to prepare.
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\1128309207.py", line 17, in main
+    convert_to_int8_tflite()
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\1254761073.py", line 22, in convert_to_int8_tflite
+    tflite_model = converter.convert()
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\lite.py", line 1254, in wrapper
+    return self._convert_and_export_metrics(convert_func, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\lite.py", line 1206, in _convert_and_export_metrics
+    result = convert_func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\lite.py", line 1590, in convert
+    return self._convert_from_saved_model(graph_def)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\lite.py", line 1449, in _convert_from_saved_model
+    return self._optimize_tflite_model(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\convert_phase.py", line 215, in wrapper
+    raise error from None  # Re-throws the exception.
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\convert_phase.py", line 205, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\lite.py", line 1150, in _optimize_tflite_model
+    model = self._quantize(
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\lite.py", line 761, in _quantize
+    calibrated = calibrate_quantize.calibrate(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\convert_phase.py", line 215, in wrapper
+    raise error from None  # Re-throws the exception.
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\convert_phase.py", line 205, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\optimize\calibrator.py", line 258, in calibrate
+    self._feed_tensors(dataset_gen, resize_input=True)
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tensorflow\lite\python\optimize\calibrator.py", line 143, in _feed_tensors
+    self._calibrator.Prepare([list(s.shape) for s in input_array])
+RuntimeError: tensorflow/lite/kernels/reshape.cc:94 num_input_elements != num_output_elements (0 != 1568)Node number 5 (RESHAPE) failed to prepare.
+2026-07-26 21:08:20,362 - INFO - Loading PyTorch model...
+2026-07-26 21:08:20,375 - INFO - Model loaded successfully.
+2026-07-26 21:08:20,379 - INFO - Checking calibration directory...
+2026-07-26 21:08:20,402 - INFO - Validated 50 calibration samples.
+2026-07-26 21:08:20,403 - INFO - Exporting model to ONNX...
+2026-07-26 21:08:21,107 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 21:08:21,130 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 21:08:21,132 - INFO - Removed 1 unused nodes
+2026-07-26 21:08:21,132 - INFO - No unused functions to remove
+2026-07-26 21:08:21,134 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:08:21,139 - INFO - Removed 2 unused nodes
+2026-07-26 21:08:21,140 - INFO - No unused functions to remove
+2026-07-26 21:08:21,141 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:08:21,147 - INFO - No unused functions to remove
+2026-07-26 21:08:21,148 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 21:08:21,153 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 21:08:21,154 - INFO - Verifying ONNX model...
+2026-07-26 21:08:21,260 - INFO - ONNX verification successful.
+2026-07-26 21:08:21,262 - INFO - Converting ONNX -> TensorFlow SavedModel...
+2026-07-26 21:08:30,916 - INFO - None
+2026-07-26 21:08:30,917 - INFO - TensorFlow SavedModel created successfully.
+2026-07-26 21:08:30,917 - INFO - Loading SavedModel...
+2026-07-26 21:08:30,937 - INFO - Available signatures: ['serving_default']
+2026-07-26 21:08:30,937 - INFO - Converting SavedModel -> INT8 TFLite...
+2026-07-26 21:08:31,254 - INFO - Preparing representative dataset...
+2026-07-26 21:08:31,338 - ERROR - name 'TFLITE_INT8_PATH' is not defined
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\1128309207.py", line 17, in main
+    convert_to_int8_tflite()
+  File "C:\Users\gouth\AppData\Local\Temp\ipykernel_29888\1254761073.py", line 24, in convert_to_int8_tflite
+    with open(TFLITE_INT8_PATH, "wb") as f:
+              ^^^^^^^^^^^^^^^^
+NameError: name 'TFLITE_INT8_PATH' is not defined
+2026-07-26 21:09:21,237 - INFO - Loading PyTorch model...
+2026-07-26 21:09:21,275 - INFO - Model loaded successfully.
+2026-07-26 21:09:21,277 - INFO - Checking calibration directory...
+2026-07-26 21:09:21,289 - INFO - Validated 50 calibration samples.
+2026-07-26 21:09:21,291 - INFO - Exporting model to ONNX...
+2026-07-26 21:09:21,944 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 21:09:21,968 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 21:09:21,971 - INFO - Removed 1 unused nodes
+2026-07-26 21:09:21,971 - INFO - No unused functions to remove
+2026-07-26 21:09:21,973 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:09:21,978 - INFO - Removed 2 unused nodes
+2026-07-26 21:09:21,979 - INFO - No unused functions to remove
+2026-07-26 21:09:21,981 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:09:21,985 - INFO - No unused functions to remove
+2026-07-26 21:09:21,986 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 21:09:21,992 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 21:09:21,993 - INFO - Verifying ONNX model...
+2026-07-26 21:09:22,092 - INFO - ONNX verification successful.
+2026-07-26 21:09:22,093 - INFO - Converting ONNX -> TensorFlow SavedModel...
+2026-07-26 21:09:31,862 - INFO - None
+2026-07-26 21:09:31,862 - INFO - TensorFlow SavedModel created successfully.
+2026-07-26 21:09:31,863 - INFO - Loading SavedModel...
+2026-07-26 21:09:31,881 - INFO - Available signatures: ['serving_default']
+2026-07-26 21:09:31,882 - INFO - Converting SavedModel -> INT8 TFLite...
+2026-07-26 21:09:32,202 - INFO - Preparing representative dataset...
+2026-07-26 21:09:32,255 - INFO - INT8 model saved successfully.
+2026-07-26 21:09:32,257 - INFO - Verifying INT8 TFLite model...
+2026-07-26 21:11:33,784 - INFO - Loading INT8 TFLite model...
+2026-07-26 21:12:59,246 - INFO - Loading INT8 TFLite model...
+2026-07-26 21:15:09,518 - INFO - Loading PyTorch model...
+2026-07-26 21:15:09,538 - INFO - Model loaded successfully.
+2026-07-26 21:15:09,553 - INFO - Checking calibration directory...
+2026-07-26 21:15:09,577 - INFO - Validated 50 calibration samples.
+2026-07-26 21:15:09,577 - INFO - Exporting model to ONNX...
+2026-07-26 21:15:10,208 - WARNING - The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 13).
+2026-07-26 21:15:10,236 - WARNING - Failed to convert the model to the target version 13 using the ONNX C API. The model was not modified
+Traceback (most recent call last):
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 120, in call
+    converted_proto = _c_api_utils.call_onnx_api(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\_c_api_utils.py", line 65, in call_onnx_api
+    result = func(proto)
+             ^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnxscript\version_converter\__init__.py", line 115, in _partial_convert_version
+    return onnx.version_converter.convert_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gouth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\onnx\version_converter.py", line 39, in convert_version
+    converted_model_str = C.convert_version(model_str, target_version)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: D:\a\onnx\onnx\onnx/version_converter/BaseConverter.h:68: adapter_lookup: Assertion `false` failed: No Adapter From Version $14 for Relu
+2026-07-26 21:15:10,239 - INFO - Removed 1 unused nodes
+2026-07-26 21:15:10,240 - INFO - No unused functions to remove
+2026-07-26 21:15:10,242 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:15:10,248 - INFO - Removed 2 unused nodes
+2026-07-26 21:15:10,249 - INFO - No unused functions to remove
+2026-07-26 21:15:10,250 - INFO - Skipping constant folding for node 'node_conv2d' because it is graph input to preserve graph signature
+2026-07-26 21:15:10,255 - INFO - No unused functions to remove
+2026-07-26 21:15:10,256 - INFO - PassManager: No more graph changes detected after step 1
+2026-07-26 21:15:10,263 - INFO - ONNX model saved to:
+C:\Users\gouth\OneDrive\Desktop\EmbedUR Training Materials\AIML\Assignment3\task_06_pytorch_to_int8_tflite\model.onnx
+2026-07-26 21:15:10,265 - INFO - Verifying ONNX model...
+2026-07-26 21:15:10,354 - INFO - ONNX verification successful.
+2026-07-26 21:15:10,355 - INFO - Converting ONNX -> TensorFlow SavedModel...
+2026-07-26 21:15:20,324 - INFO - None
+2026-07-26 21:15:20,325 - INFO - TensorFlow SavedModel created successfully.
+2026-07-26 21:15:20,325 - INFO - Loading SavedModel...
+2026-07-26 21:15:20,344 - INFO - Available signatures: ['serving_default']
+2026-07-26 21:15:20,345 - INFO - Converting SavedModel -> INT8 TFLite...
+2026-07-26 21:15:20,672 - INFO - Preparing representative dataset...
+2026-07-26 21:15:20,725 - INFO - INT8 model saved successfully.
+2026-07-26 21:15:20,726 - INFO - Loading INT8 TFLite model...
