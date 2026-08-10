@@ -39,3 +39,8 @@ A collection of notebooks demonstrating the fundamentals of neural network quant
 - Bit-width Analysis (INT8/INT6/INT4)
 - Per-Tensor vs Per-Channel Quantization
 - PyTorch → ONNX → TensorFlow → INT8 TFLite Conversion
+
+---
+## Audio Processing Assignment
+
+Implemented a series of audio processing and machine learning tasks, including audio preprocessing and visualization, speech denoising using a pretrained DTLN model, audio similarity using pretrained embeddings, CNN-based audio classification with SpecAugment, and LSTM-based speech emotion classification. The assignments cover audio feature extraction using Mel-spectrograms and MFCCs, model training and inference, performance evaluation, and visualization of results.
